@@ -54,8 +54,7 @@
     <div class="cta">
       <a href="#proyectos" class="btn btn-green">Ver proyectos</a>
       <a href="#contacto" class="btn btn-ghost">Contáctame</a>
-      <!-- Coloca tu CV en la carpeta "docs/" con este nombre -->
-      <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download>Descargar CV</a>
+      <button type="button" class="btn btn-orange" id="cvPreviewBtn">Descargar CV</button>
     </div>
   </div>
   <div class="hero-photo reveal">
@@ -114,11 +113,11 @@
       <div class="p-img"><img src="img/campus-shop.png" alt="Registro de gimnasio en Python" loading="lazy" style="filter:hue-rotate(-50deg) saturate(1.3)"></div>
       <div class="p-body"><span class="pill g">HTML, CSS3 y JavaScript</span><h3>Pagina web-venta de ropa</h3><p>Desarrollo de una página web para la venta de ropa utilizando tecnologías web.</p><em>Ver proyecto →</em></div>
     </a>
-    <a class="project reveal" href="https://github.com/lestergarcia711/portafolio-lester" target="_blank" rel="noopener">
+    <a class="project reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener">
       <div class="p-img"><img src="img/GIT.png" alt="Proyecto con Git" loading="lazy"></div>
-      <div class="p-body"><span class="pill o">Git</span><h3>Control de versiones</h3><p>Repositorios, commits, ramas y merge aplicados en la práctica.</p><em>Ver proyecto →</em></div>
+      <div class="p-body"><span class="pill o">Git</span><h3>Control de versiones</h3><p>Repositorios, commits, ramas y merge aplicados en la práctica de un repositorio grupal donde un cada uno crea su rama y commit par revision, y si cumple con las metricas requeridas es aceptado y agregado a produccion.</p><em>Ver proyecto →</em></div>
     </a>
-    <a class="project reveal" href="https://github.com/lestergarcia711/portafolio-lester" target="_blank" rel="noopener">
+    <a class="project reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener">
       <div class="p-img"><img src="img/html.png" alt="Portafolio en HTML y CSS" loading="lazy"></div>
       <div class="p-body"><span class="pill b">HTML · CSS · JS</span><h3>Portafolio web</h3><p>Diseño de este portafolio digital con tecnologías web puras.</p><em>Ver proyecto →</em></div>
     </a>
@@ -159,6 +158,21 @@
 </section>
 
 </main>
+
+<div class="cv-modal" id="cvModal" aria-hidden="true">
+  <div class="cv-modal-backdrop" data-close="cvModal"></div>
+  <div class="cv-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <div class="cv-modal-header">
+      <h3 id="cvModalTitle">Previsualización del CV</h3>
+      <button type="button" class="cv-modal-close" id="cvCloseBtn" aria-label="Cerrar vista previa">✕</button>
+    </div>
+    <iframe src="docs/CV-Lester-Garcia.pdf" title="Vista previa del curriculum vitae" loading="lazy"></iframe>
+    <div class="cv-modal-actions">
+      <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">Cerrar</button>
+      <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download>Descargar PDF</a>
+    </div>
+  </div>
+</div>
 
 <footer>
   <p>"Everything is possible only if you want" · © <span id="year"></span> Lester García</p>

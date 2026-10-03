@@ -76,6 +76,34 @@ $$(".reveal").forEach(el => reveal.observe(el));
   })();
 })();
 
+/* ----- Vista previa del CV antes de descargar ----- */
+const cvModal = $("#cvModal");
+const cvPreviewBtn = $("#cvPreviewBtn");
+const cvCloseBtn = $("#cvCloseBtn");
+const cvSecondaryCloseBtn = $("#cvSecondaryCloseBtn");
+
+const openCvModal = () => {
+  cvModal.classList.add("show");
+  cvModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+};
+
+const closeCvModal = () => {
+  cvModal.classList.remove("show");
+  cvModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+};
+
+cvPreviewBtn.addEventListener("click", openCvModal);
+cvCloseBtn.addEventListener("click", closeCvModal);
+cvSecondaryCloseBtn.addEventListener("click", closeCvModal);
+cvModal.addEventListener("click", e => {
+  if (e.target.matches("[data-close='cvModal']")) closeCvModal();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && cvModal.classList.contains("show")) closeCvModal();
+});
+
 /* ----- Botón volver arriba ----- */
 const toTop = $("#toTop");
 addEventListener("scroll", () => toTop.classList.toggle("show", scrollY > 600), { passive: true });

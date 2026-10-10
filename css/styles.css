@@ -367,6 +367,8 @@ nav a.active {
   max-width: 480px;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .5));
   animation: float 6s ease-in-out infinite;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .glow {
@@ -379,42 +381,6 @@ nav a.active {
   filter: blur(46px);
   opacity: .28;
   animation: spin 14s linear infinite;
-}
-
-.chip {
-  position: absolute;
-  z-index: 3;
-  padding: 8px 16px;
-  background: rgba(11, 18, 32, .88);
-  border: 1px solid;
-  border-radius: 50px;
-  font-size: .85rem;
-  font-weight: 700;
-  backdrop-filter: blur(6px);
-  animation: float 5s ease-in-out infinite;
-}
-
-.c1 {
-  top: 14%;
-  left: 2%;
-  color: var(--green);
-  border-color: var(--green);
-}
-
-.c2 {
-  top: 38%;
-  right: 0;
-  color: var(--orange);
-  border-color: var(--orange);
-  animation-delay: -2s;
-}
-
-.c3 {
-  bottom: 16%;
-  left: 0;
-  color: var(--blue);
-  border-color: var(--blue);
-  animation-delay: -3.5s;
 }
 
 /* 5. Títulos y secciones de contenido */

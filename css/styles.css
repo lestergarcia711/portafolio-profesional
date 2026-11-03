@@ -101,6 +101,59 @@ section {
   font-size: .85rem;
 }
 
+/* Presenta el selector de idioma debajo de la identidad del portafolio */
+.language-switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -14px 0 24px;
+  padding: 8px 10px 8px 12px;
+  background: rgba(125, 211, 252, .06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.language-label {
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.language-options {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--bg);
+  border-radius: 9px;
+}
+
+.language-options a {
+  min-width: 34px;
+  padding: 4px 7px;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: .75rem;
+  font-weight: 800;
+  text-align: center;
+  transition: .25s;
+}
+
+.language-options a:hover {
+  color: var(--text);
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+
+.language-options a[aria-current="page"] {
+  color: #08201e;
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 12px rgba(45, 212, 191, .24);
+}
+
 nav {
   display: flex;
   flex: 1;

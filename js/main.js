@@ -1,12 +1,14 @@
 /* =====================================================
    CONFIGURACIÓN: edita aquí tus datos de contacto
    ===================================================== */
+const isEnglish = document.documentElement.lang === "en";
+
 const CONFIG = {
   whatsapp: "50232075850",                      // código de país + número, sin + ni espacios (502 = Guatemala)
   email:    "lestergarcia711@gmail.com",
   linkedin: "https://www.linkedin.com/in/lester-garcia-dev/", // Pega aquí tu URL de LinkedIn; la página no la muestra como texto.
   github:   "https://github.com/lestergarcia711",
-  roles:    ["de Software", "Front-End", "Back-End/JavaScript"] // Roles que se mostrarán en el efecto de escritura
+  roles:    isEnglish ? ["Developer", "Front-End", "Back-End/JavaScript"] : ["de Software", "Front-End", "Back-End/JavaScript"] // Roles que se mostrarán en el efecto de escritura
 };
 
 const $  = (s, c = document) => c.querySelector(s);
@@ -14,7 +16,7 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 /* ----- Enlaces de contacto desde CONFIG ----- */
 const links = {
-  wa:   `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola Lester, vi tu portafolio y me gustaría contactarte.")}`,
+  wa:   `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(isEnglish ? "Hello Lester, I saw your portfolio and would like to contact you." : "Hola Lester, vi tu portafolio y me gustaría contactarte.")}`,
   mail: `mailto:${CONFIG.email}`,
   li:   CONFIG.linkedin,
   gh:   CONFIG.github
@@ -112,7 +114,9 @@ toTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 /* ----- Formulario: abre WhatsApp con el mensaje ya redactado ----- */
 $("#form").addEventListener("submit", e => {
   e.preventDefault();
-  const text = `Hola Lester, soy ${$("#name").value} (${$("#email").value}).\n\n${$("#msg").value}`;
+  const text = isEnglish
+    ? `Hello Lester, my name is ${$("#name").value} (${$("#email").value}).\n\n${$("#msg").value}`
+    : `Hola Lester, soy ${$("#name").value} (${$("#email").value}).\n\n${$("#msg").value}`;
   open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
   e.target.reset();
 });

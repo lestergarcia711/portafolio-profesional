@@ -6,7 +6,7 @@ const CONFIG = {
   email:    "lestergarcia711@gmail.com",
   linkedin: "https://www.linkedin.com/in/lester-garcia-dev/", // Pega aquí tu URL de LinkedIn; la página no la muestra como texto.
   github:   "https://github.com/lestergarcia711",
-  roles:    ["de Software", "Front-End", "JavaScript", "Python"]
+  roles:    ["de Software", "Front-End", "Back-End/JavaScript"] // Roles que se mostrarán en el efecto de escritura
 };
 
 const $  = (s, c = document) => c.querySelector(s);

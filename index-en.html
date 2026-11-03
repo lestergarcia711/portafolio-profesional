@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lester Garcia | Software Developer</title>
+  <meta name="description" content="Lester Garcia's portfolio: software developer in training. Projects with Python, HTML, CSS, JavaScript and Git.">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Mobile top bar -->
+<div class="topbar">
+  <strong>Lester<span>.</span>dev</strong>
+  <button id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+</div>
+
+<!-- Sidebar navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <img src="img/perfil.jpeg" alt="Lester Garcia">
+    <h2>Lester Garcia</h2>
+    <p>Software Explorer</p>
+  </div>
+
+  <!-- Allows visitors to switch between the Spanish and English versions -->
+  <div class="language-switcher" aria-label="Language selector">
+    <span class="language-label">Language</span>
+    <div class="language-options">
+      <a href="index.html">ES</a>
+      <a href="index-en.html" aria-current="page">EN</a>
+    </div>
+  </div>
+
+  <nav id="nav">
+    <a href="#home"><i>⌂</i>Home</a>
+    <a href="#about"><i>☻</i>About me</a>
+    <a href="#skills"><i>⚡</i>Skills</a>
+    <a href="#projects"><i>❖</i>Projects</a>
+    <a href="#journey"><i>➜</i>Experience</a>
+    <a href="#contact"><i>✉</i>Contact</a>
+  </nav>
+
+  <div class="side-social">
+    <a data-link="gh" target="_blank" rel="noopener" aria-label="GitHub"><img src="img/github.png" alt=""></a>
+    <a data-link="li" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="img/linkedin.png" alt=""></a>
+    <a data-link="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/whatsapp.png" alt=""></a>
+    <a data-link="mail" aria-label="Email"><img src="img/email.png" alt=""></a>
+  </div>
+</aside>
+
+<main>
+
+<!-- Hero section -->
+<section id="home" class="hero">
+  <div class="hero-text reveal">
+    <span class="tag">Hello, I am</span>
+    <h1>Lester <em>Garcia</em></h1>
+    <p class="role">Software <b id="typed"></b><span class="cursor">|</span></p>
+    <p class="lead">I am passionate about technology and currently training as a software developer. I build modern websites and learn by creating real projects.</p>
+    <div class="cta">
+      <a href="#projects" class="btn btn-green">View projects</a>
+      <a href="#contact" class="btn btn-ghost">Contact me</a>
+      <button type="button" class="btn btn-orange" id="cvPreviewBtn">Download CV</button>
+    </div>
+  </div>
+  <div class="hero-photo reveal">
+    <div class="glow"></div>
+    <img src="img/perfil.jpeg" alt="Photo of Lester Garcia">
+  </div>
+</section>
+
+<!-- About section -->
+<section id="about">
+  <h2 class="title"><span>01</span> About me</h2>
+  <p class="intro reveal">I am working toward becoming a software developer. I enjoy understanding how things work from the ground up and practicing by building projects that solve real problems.</p>
+  <div class="cards">
+    <article class="card reveal"><h3 class="g">Development</h3><p>I focus on HTML, CSS and JavaScript to create modern and responsive websites.</p></article>
+    <article class="card reveal"><h3 class="b">Goal</h3><p>Become a full-stack developer and work on real team projects.</p></article>
+    <article class="card reveal"><h3 class="o">Learning</h3><p>I keep improving by practicing, versioning my code and creating new things.</p></article>
+  </div>
+  <div class="stats reveal">
+    <div><b data-count="5">0</b><span>Projects</span></div>
+    <div><b data-count="6">0</b><span>Technologies</span></div>
+    <div><b data-count="100">0</b><span>% Motivation</span></div>
+  </div>
+</section>
+
+<!-- Skills section -->
+<section id="skills">
+  <h2 class="title"><span>02</span> Skills</h2>
+  <div class="skills">
+    <div class="skill reveal" data-level="70"><div class="s-top"><b>HTML5</b><span>70%</span></div><div class="bar"><i></i></div></div>
+    <div class="skill reveal" data-level="60"><div class="s-top"><b>CSS3</b><span>60%</span></div><div class="bar"><i></i></div></div>
+    <div class="skill reveal" data-level="60"><div class="s-top"><b>JavaScript</b><span>60%</span></div><div class="bar"><i></i></div></div>
+    <div class="skill reveal" data-level="50"><div class="s-top"><b>Python</b><span>50%</span></div><div class="bar"><i></i></div></div>
+    <div class="skill reveal" data-level="80"><div class="s-top"><b>Git &amp; GitHub</b><span>80%</span></div><div class="bar"><i></i></div></div>
+    <div class="skill reveal" data-level="60"><div class="s-top"><b>Databases (MySQL and PostgreSQL)</b><span>60%</span></div><div class="bar"><i></i></div></div>
+  </div>
+</section>
+
+<!-- Projects section -->
+<section id="projects">
+  <h2 class="title"><span>03</span> Projects</h2>
+  <div class="projects">
+    <a class="project project-featured reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener">
+      <div class="p-img"><img src="img/api-recetas.png" alt="Virtual chef connected to a recipe API" loading="lazy"></div>
+      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Virtual Chef API</h3><p>An interactive mini website using an API.</p><em>View project →</em></div>
+    </a>
+    <a class="project reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener">
+      <div class="p-img"><img src="img/campus-parking.png" alt="Parking management system" loading="lazy" style="filter:hue-rotate(60deg)"></div>
+      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Parking Control</h3><p>A system for managing a parking lot.</p><em>View project →</em></div>
+    </a>
+    <a class="project reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener">
+      <div class="p-img"><img src="img/campus-shop.png" alt="Online clothing store" loading="lazy" style="filter:hue-rotate(-50deg) saturate(1.3)"></div>
+      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Online Clothing Store</h3><p>A website for selling clothes using web technologies.</p><em>View project →</em></div>
+    </a>
+    <a class="project reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener">
+      <div class="p-img"><img src="img/GIT.png" alt="Git project" loading="lazy"></div>
+      <div class="p-body"><span class="pill o">Git</span><h3>Version Control</h3><p>Repositories, commits, branches and merges applied in a collaborative project.</p><em>View project →</em></div>
+    </a>
+    <a class="project reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener">
+      <div class="p-img"><img src="img/html.png" alt="Portfolio built with HTML and CSS" loading="lazy"></div>
+      <div class="p-body"><span class="pill b">HTML · CSS · JS</span><h3>Web Portfolio</h3><p>This portfolio designed with pure web technologies.</p><em>View project →</em></div>
+    </a>
+  </div>
+</section>
+
+<!-- Experience section -->
+<section id="journey">
+  <h2 class="title"><span>04</span> Experience</h2>
+  <div class="timeline">
+    <div class="t-item reveal"><b>2026</b><h3>Professional web portfolio</h3><p>Published my portfolio on GitHub with HTML, CSS and JavaScript.</p></div>
+    <div class="t-item reveal"><b>In progress</b><h3>Software Development Technician training</h3><p>Learning front-end, back-end and good development practices.</p></div>
+    <div class="t-item reveal"><b>Practice</b><h3>Projects with Node.js, JavaScript, MySQL and Git</h3><p>Inventory, parking and gym projects with version control on GitHub.</p></div>
+  </div>
+</section>
+
+<!-- Contact section -->
+<section id="contact">
+  <h2 class="title"><span>05</span> Contact</h2>
+  <p class="intro reveal">Do you have an idea, an opportunity or want to collaborate? Write to me through any of these channels.</p>
+  <div class="contact-grid">
+    <a class="c-card reveal" data-link="wa" target="_blank" rel="noopener"><i class="ic g"><img src="img/whatsapp.png" alt=""></i><div><b>WhatsApp</b><span>Message me directly</span></div></a>
+    <a class="c-card reveal" data-link="mail"><i class="ic b"><img src="img/email.png" alt=""></i><div><b>Email</b><span id="mailTxt">lestergarcia711@gmail.com</span></div></a>
+    <a class="c-card reveal" data-link="li" target="_blank" rel="noopener"><i class="ic o"><img src="img/linkedin.png" alt=""></i><div><b>LinkedIn</b><span>Let's connect</span></div></a>
+    <a class="c-card reveal" data-link="gh" target="_blank" rel="noopener"><i class="ic g"><img src="img/github.png" alt=""></i><div><b>GitHub</b><span>lestergarcia711</span></div></a>
+  </div>
+
+  <form id="form" class="form reveal">
+    <h3>Or send me a message</h3>
+    <div class="row">
+      <label>Name<input type="text" id="name" required></label>
+      <label>Email<input type="email" id="email" required></label>
+    </div>
+    <label>Message<textarea id="msg" rows="4" required placeholder="Tell me about your project..."></textarea></label>
+    <button class="btn btn-green" type="submit">Send via WhatsApp</button>
+  </form>
+</section>
+
+</main>
+
+<!-- English CV preview modal -->
+<div class="cv-modal" id="cvModal" aria-hidden="true">
+  <div class="cv-modal-backdrop" data-close="cvModal"></div>
+  <div class="cv-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <div class="cv-modal-header">
+      <h3 id="cvModalTitle">CV Preview</h3>
+      <button type="button" class="cv-modal-close" id="cvCloseBtn" aria-label="Close preview">✕</button>
+    </div>
+    <iframe src="docs/CV-Lester-Garcia.pdf" title="Curriculum vitae preview" loading="lazy"></iframe>
+    <div class="cv-modal-actions">
+      <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">Close</button>
+      <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download>Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>"Everything is possible only if you want" · © <span id="year"></span> Lester Garcia</p>
+</footer>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

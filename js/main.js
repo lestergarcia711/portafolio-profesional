@@ -58,7 +58,6 @@ const reveal = new IntersectionObserver(entries => {
     if (!en.isIntersecting) return;
     const el = en.target;
     el.classList.add("in");
-    if (el.dataset.level) setTimeout(() => $(".bar i", el).style.width = el.dataset.level + "%", 150);
     $$("[data-count]", el).forEach(countUp);
     reveal.unobserve(el);
   });

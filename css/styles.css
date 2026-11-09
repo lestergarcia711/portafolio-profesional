@@ -24,6 +24,20 @@ html {
   scroll-padding-top: 20px;
 }
 
+@font-face {
+  font-family: 'Redaction 10';
+  src: url('../fonts/Redaction10-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Redaction 10';
+  src: url('../fonts/Redaction10-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 body {
   background: var(--bg);
   background-image:
@@ -32,6 +46,10 @@ body {
   color: var(--text);
   font-family: 'Segoe UI', system-ui, Arial, sans-serif;
   line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Redaction 10', Georgia, serif;
 }
 
 a {
@@ -446,6 +464,7 @@ nav a.active {
 }
 
 .title span {
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
   padding: 2px 10px;
   color: var(--green);
   border: 1px solid var(--green);

@@ -7,6 +7,7 @@
   <meta name="description" content="Portafolio de Lester García: desarrollador full stack en formación. Proyectos en Python, HTML, CSS, JavaScript y Git.">
   <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -31,6 +32,15 @@
     <div class="language-options">
       <a href="index.html" aria-current="page">ES</a>
       <a href="index-en.html">EN</a>
+    </div>
+  </div>
+
+  <!-- Selector de tema -->
+  <div class="theme-switcher" aria-label="Selector de tema">
+    <span class="theme-label">Tema</span>
+    <div class="theme-options">
+      <button type="button" data-theme-set="light" aria-pressed="false">☀ Claro</button>
+      <button type="button" data-theme-set="dark" aria-pressed="true">☾ Oscuro</button>
     </div>
   </div>
 

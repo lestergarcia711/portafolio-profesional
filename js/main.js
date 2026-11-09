@@ -25,6 +25,19 @@ $$("[data-link]").forEach(a => a.href = links[a.dataset.link]);
 $("#mailTxt").textContent = CONFIG.email;
 $("#year").textContent = new Date().getFullYear();
 
+/* ----- Modo claro / oscuro (se recuerda la elección) ----- */
+const themeBtns = $$("[data-theme-set]");
+const applyTheme = t => {
+  document.documentElement.dataset.theme = t;
+  themeBtns.forEach(b => b.setAttribute("aria-pressed", b.dataset.themeSet === t));
+  $("meta[name='theme-color']").content = t === "light" ? "#f5f7fb" : "#0b1220";
+};
+applyTheme(document.documentElement.dataset.theme || "dark");
+themeBtns.forEach(b => b.addEventListener("click", () => {
+  applyTheme(b.dataset.themeSet);
+  try { localStorage.setItem("theme", b.dataset.themeSet); } catch (e) {}
+}));
+
 /* ----- Menú móvil ----- */
 const sidebar = $("#sidebar"), menuBtn = $("#menuBtn");
 const toggle = open => {

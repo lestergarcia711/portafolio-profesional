@@ -124,14 +124,26 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: -14px 0 24px;
+  margin: -14px 0 10px;
   padding: 8px 10px 8px 12px;
   background: rgba(125, 211, 252, .06);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
 
-.language-label {
+.theme-switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 24px;
+  padding: 8px 10px 8px 12px;
+  background: rgba(125, 211, 252, .06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.language-label,
+.theme-label {
   color: var(--muted);
   font-size: .75rem;
   font-weight: 700;
@@ -139,7 +151,8 @@ section {
   text-transform: uppercase;
 }
 
-.language-options {
+.language-options,
+.theme-options {
   display: flex;
   gap: 4px;
   padding: 3px;
@@ -147,7 +160,11 @@ section {
   border-radius: 9px;
 }
 
-.language-options a {
+.language-options a,
+.theme-options button {
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
   min-width: 34px;
   padding: 4px 7px;
   color: var(--muted);
@@ -159,13 +176,15 @@ section {
   transition: .25s;
 }
 
-.language-options a:hover {
+.language-options a:hover,
+.theme-options button:hover {
   color: var(--text);
   border-color: var(--blue);
   transform: translateY(-1px);
 }
 
-.language-options a[aria-current="page"] {
+.language-options a[aria-current="page"],
+.theme-options button[aria-pressed="true"] {
   color: #08201e;
   background: var(--green);
   border-color: var(--green);
@@ -956,4 +975,49 @@ footer {
     opacity: 1;
     transform: none;
   }
+}
+
+/* 9. Modo claro */
+:root[data-theme="light"] {
+  --bg: #f5f7fb;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --line: rgba(15, 23, 42, .14);
+  --green: #0f766e;
+  --blue: #0369a1;
+  --orange: #b45309;
+  --text: #0f172a;
+  --muted: #475569;
+  color-scheme: light;
+}
+
+:root[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 85% 0%, rgba(3, 105, 161, .08), transparent 40%),
+    radial-gradient(circle at 10% 60%, rgba(15, 118, 110, .06), transparent 35%);
+}
+
+:root[data-theme="light"] .language-options a[aria-current="page"],
+:root[data-theme="light"] .theme-options button[aria-pressed="true"],
+:root[data-theme="light"] .side-social a:hover,
+:root[data-theme="light"] .btn-green,
+:root[data-theme="light"] .btn-orange,
+:root[data-theme="light"] #toTop {
+  color: #fff;
+}
+
+:root[data-theme="light"] .brand img {
+  background: #e2e8f0;
+}
+
+:root[data-theme="light"] .ic {
+  background: rgba(15, 23, 42, .04);
+}
+
+:root[data-theme="light"] .cv-modal-dialog {
+  background: #fff;
+}
+
+:root[data-theme="light"] .hero h1 em {
+  text-shadow: none;
 }

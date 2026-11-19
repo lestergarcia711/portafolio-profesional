@@ -213,16 +213,17 @@ $$(".prow").forEach(r => r.style.setProperty("--accent", r.dataset.accent));
   const cv = $("#stack"); if (!cv) return;
   const T = (es, en) => isEnglish ? en : es;
   const NODES = [
-    { n: "HTML",       x: .12, y: .30, d: T("Estructura semántica y accesible de cada página.", "Semantic, accessible structure for every page.") },
-    { n: "CSS",        x: .26, y: .62, d: T("Diseño responsivo, animaciones y temas claro/oscuro.", "Responsive design, animations and light/dark themes.") },
-    { n: "JavaScript", x: .42, y: .30, d: T("Interactividad en el navegador y lógica de aplicación.", "Browser interactivity and application logic.") },
-    { n: "Node.js",    x: .60, y: .55, d: T("Servidores y APIs REST del lado del backend.", "Back-end servers and REST APIs.") },
-    { n: "Express",    x: .76, y: .28, d: T("Rutas y middlewares para construir APIs.", "Routes and middleware to build APIs.") },
-    { n: "MySQL",      x: .62, y: .85, d: T("Modelos relacionales y consultas SQL.", "Relational models and SQL queries.") },
-    { n: "Git",        x: .30, y: .88, d: T("Ramas, commits y trabajo en equipo con GitHub.", "Branches, commits and teamwork on GitHub.") },
-    { n: "IA",         x: .90, y: .62, d: T("Uso responsable de asistentes de código para ganar productividad.", "Responsible use of code assistants to boost productivity.") }
+    { n: "HTML", logo: "img/skills/html5.svg",       x: .12, y: .30, d: T("Estructura semántica y accesible de cada página.", "Semantic, accessible structure for every page.") },
+    { n: "CSS", logo: "img/skills/css3.svg",        x: .26, y: .62, d: T("Diseño responsivo, animaciones y temas claro/oscuro.", "Responsive design, animations and light/dark themes.") },
+    { n: "JavaScript", logo: "img/skills/javascript.svg", x: .42, y: .30, d: T("Interactividad en el navegador y lógica de aplicación.", "Browser interactivity and application logic.") },
+    { n: "Node.js", logo: "img/skills/nodedotjs.svg",    x: .60, y: .55, d: T("Servidores y APIs REST del lado del backend.", "Back-end servers and REST APIs.") },
+    { n: "Express", logo: "img/skills/express.svg",    x: .76, y: .28, d: T("Rutas y middlewares para construir APIs.", "Routes and middleware to build APIs.") },
+    { n: "MySQL", logo: "img/skills/mysql.svg",      x: .62, y: .85, d: T("Modelos relacionales y consultas SQL.", "Relational models and SQL queries.") },
+    { n: "Git", logo: "img/skills/git.svg",        x: .30, y: .88, d: T("Ramas, commits y trabajo en equipo con GitHub.", "Branches, commits and teamwork on GitHub.") },
+    { n: "IA", logo: "img/skills/ia.svg",         x: .90, y: .62, d: T("Uso responsable de asistentes de código para ganar productividad.", "Responsible use of code assistants to boost productivity.") }
   ];
   window.STACK_NODES = NODES; // lo reutiliza el mundo 3D (js/world.js)
+  NODES.forEach(n => { n.img = new Image(); n.img.src = n.logo; n.show = 0; }); // logo oculto hasta el hover
   const LINKS = [[0,1],[0,2],[1,2],[2,3],[3,4],[3,5],[2,6],[4,5],[4,7],[3,7],[1,6],[5,6]];
   const card = $("#nodeCard"), title = $("#nodeTitle"), text = $("#nodeText");
   const idle = () => { title.textContent = T("Mi stack", "My stack"); text.textContent = T("Explora cada nodo para ver cómo lo uso.", "Explore each node to see how I use it."); card.classList.remove("on"); };
@@ -282,9 +283,15 @@ $$(".prow").forEach(r => r.style.setProperty("--accent", r.dataset.accent));
     });
     ctx.textAlign = "center"; ctx.font = "500 13px Inter, system-ui, sans-serif";
     NODES.forEach((n, i) => {
-      const x = n.x * W, y = n.y * H, on = hot === i, r = (on ? 15 : 9) + Math.sin(t + i) * .8;
+      const x = n.x * W, y = n.y * H, on = hot === i;
+      n.show += ((on ? 1 : 0) - n.show) * .18;
+      const r = 9 + n.show * 31 + Math.sin(t + i) * .8;
       ctx.beginPath(); ctx.arc(x, y, r, 0, 7);
-      ctx.fillStyle = on ? col.g : col.bg; ctx.fill(); ctx.strokeStyle = col.g; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = n.show > .02 ? "#f5f7fa" : col.bg; ctx.fill(); ctx.strokeStyle = col.g; ctx.lineWidth = 1.5; ctx.stroke();
+      if (n.show > .05 && n.img.complete && n.img.naturalWidth) {
+        const sz = r * 1.35; ctx.globalAlpha = n.show;
+        ctx.drawImage(n.img, x - sz / 2, y - sz / 2, sz, sz); ctx.globalAlpha = 1;
+      }
       ctx.fillStyle = col.t; ctx.fillText(n.n, x, y + r + 16);
     });
     if (hot >= 0) { title.textContent = NODES[hot].n; text.textContent = NODES[hot].d; card.classList.add("on"); }

@@ -23,7 +23,7 @@
   /* ---------- Estado ---------- */
   let ready = false, active = false, running = false;
   let fades = [], R, S, C, ico, knot, stars, cluster, rings = [], spheres = [], panels = [], labels = [], lineMats = [];
-  let col = {}, cG, cO;
+  let col = {}, cG, cO; const tmpV = new THREE.Vector3(), HOVER_PX = 110; // tamaño en pantalla de la ficha con logo
   let tp = 0, p = 0, tmx = 0, tmy = 0, mx = 0, my = 0, tagX = 0, tagY = 0;
   let lastTouch = false, selected = null;
   const mv = new THREE.Vector2(9, 9);
@@ -93,6 +93,12 @@
       const m = new THREE.Mesh(new THREE.SphereGeometry(.55, 24, 24), new THREE.MeshBasicMaterial());
       m.position.set(r * Math.sin(phi) * Math.cos(th), r * Math.cos(phi) * .8, r * Math.sin(phi) * Math.sin(th));
       m.userData = { kind: "node", i, name: n.n, text: n.d };
+      const cvs = document.createElement("canvas"); cvs.width = cvs.height = 256;
+      const tex = new THREE.CanvasTexture(cvs), im = new Image();
+      im.onload = () => { const c = cvs.getContext("2d"); c.fillStyle = "#f5f7fa"; c.beginPath(); c.arc(128, 128, 124, 0, 7); c.fill(); c.lineWidth = 6; c.strokeStyle = col.g || "#2dd4bf"; c.stroke(); c.drawImage(im, 40, 40, 176, 176); tex.needsUpdate = true; };
+      im.src = n.logo;
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0, depthTest: false }));
+      sp.renderOrder = 10; sp.scale.setScalar(.01); m.add(sp); m.userData.logo = sp;
       const lb = label(n.n, "text", 4, 1); lb.position.set(0, 1.3, 0); m.add(lb);
       cluster.add(m); spheres.push(m);
     });
@@ -173,7 +179,7 @@
   const pick = () => {
     ray.setFromCamera(mv, C);
     const list = [...(p > .28 && p < .5 ? spheres : []), ...panels.filter(m => (m.userData.group.userData.k || 0) > .5)];
-    const h = ray.intersectObjects(list)[0]; return h ? h.object : null;
+    const h = ray.intersectObjects(list, false)[0]; return h ? h.object : null;
   };
   document.addEventListener("pointerdown", e => { if (active) lastTouch = e.pointerType !== "mouse"; });
   $("#gl").addEventListener("click", e => {
@@ -206,7 +212,10 @@
 
     updateFades();
     const hit = lastTouch ? selected : pick();
-    spheres.forEach(s => { const on = s === hit; s.scale.setScalar(on ? 1.7 : 1); s.material.color.copy(on ? cO : cG); });
+    spheres.forEach(s => { const on = s === hit; s.scale.setScalar(on ? 1.7 : 1); s.material.color.copy(on ? cO : cG);
+      const sp = s.userData.logo, k = sp.material.opacity + ((on ? 1 : 0) - sp.material.opacity) * .35;
+      sp.material.opacity = k; s.material.visible = k < .05;
+      s.getWorldPosition(tmpV); sp.scale.setScalar(Math.max(.01, k * tmpV.distanceTo(C.position) * 2 * Math.tan(C.fov * Math.PI / 360) * (HOVER_PX / R.domElement.clientHeight) / s.scale.x)); });
     panels.forEach(m => { const g = m.userData.group, goal = g.userData.base * (m === hit ? 1.1 : 1); g.scale.setScalar(g.scale.x + (goal - g.scale.x) * .12); });
     const ring = $(".cursor-ring"); if (ring) ring.classList.toggle("big", !!hit);
     tag.style.opacity = hit ? 1 : 0;

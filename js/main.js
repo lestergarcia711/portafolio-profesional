@@ -246,7 +246,9 @@ $$(".prow").forEach(r => r.style.setProperty("--accent", r.dataset.accent));
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   };
   readColors(); resize();
-  addEventListener("resize", resize);
+  // ResizeObserver (no "resize" de la ventana): en modo 3D el canvas está oculto (0×0)
+  // y debe ajustarse al volver al modo 2D sin recargar la página.
+  new ResizeObserver(resize).observe(cv);
   new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   const pos = e => { const r = cv.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; };

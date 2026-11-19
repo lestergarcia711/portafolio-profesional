@@ -8,72 +8,56 @@
   <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
   <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script>try{var d=document.documentElement;if(location.protocol!=="file:"&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&localStorage.getItem("mode")!=="page")d.classList.add("immersive")}catch(e){}</script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<!-- Mobile top bar -->
-<div class="topbar">
-  <strong>Lester<span>.</span>dev</strong>
+<!-- Navegación: píldora flotante -->
+<header class="pillnav" id="sidebar">
+  <a class="pill-brand" href="#home" aria-label="Home">L<span>.</span></a>
+  <nav id="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about">About me</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#journey">Experience</a><a href="#contact">Contact</a></nav>
+  <div class="pill-tools">
+    <div class="language-options" aria-label="Language selector">
+      <a href="index.html" >ES</a><a href="index-en.html" aria-current="page">EN</a>
+    </div>
+    <div class="theme-options" aria-label="Theme selector">
+      <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light">☀</button>
+      <button type="button" data-theme-set="dark" aria-pressed="true" aria-label="Dark">☾</button>
+    </div>
+    <button type="button" id="modeBtn" hidden></button>
+  </div>
   <button id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<!-- Mundo 3D inmersivo (js/world.js). Si no hay WebGL, se usa la página clásica de abajo -->
+<div class="world" id="world" role="region" aria-label="3D tour of the portfolio">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="cap" id="c0"><small>— Software developer</small><h1 class="big-name" aria-label="Lester Garcia"><span class="line" data-split>Lester</span><span class="line"><em data-split>Garcia</em></span></h1><p>Scroll down to explore the space.</p></div>
+  <div class="cap" id="c1"><small>01 — About me</small><h2>I learn by building.</h2><p>I am working toward becoming a software development technician. I enjoy understanding how things work from the ground up and practicing by building projects that solve real problems.</p><ul class="mini-tl"><li>2026 · Professional web portfolio</li><li>In progress · Software Development Technician training</li><li>Practice · NodeJS, Express, MySQL and Git</li></ul></div>
+  <div class="cap" id="c2"><small>02 — Skills</small><h2 id="stackTitle">My stack, in orbit.</h2><p id="stackText">Hover (or tap) a node to see how I use it.</p></div>
+  <div class="cap" id="c3"><small>03 — Projects</small><h2>Fly through my projects.</h2><p>Click a panel to open it.</p></div>
+  <div class="cap" id="c4"><small>04 — Contact</small><h2>Let's talk?</h2><p>Do you have an idea, an opportunity or want to collaborate? Write to me through any of these channels.</p>
+    <div class="cap-links"><a data-link="wa" target="_blank" rel="noopener">WhatsApp</a><a data-link="mail">Email</a><a data-link="li" target="_blank" rel="noopener">LinkedIn</a><a data-link="gh" target="_blank" rel="noopener">GitHub</a><button type="button" data-cv>Download CV</button></div></div>
+  <div class="world-tag" id="worldTag"></div>
+  <div class="world-tip" id="worldTip">↓ scroll to travel · move the mouse to look around</div>
+  <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
 </div>
-
-<!-- Sidebar navigation -->
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <img src="img/perfil.jpeg" alt="Lester Garcia">
-    <h2>Lester Garcia</h2>
-    <p>Software Explorer</p>
-  </div>
-
-  <!-- Allows visitors to switch between the Spanish and English versions -->
-  <div class="language-switcher" aria-label="Language selector">
-    <span class="language-label">Language</span>
-    <div class="language-options">
-      <a href="index.html">ES</a>
-      <a href="index-en.html" aria-current="page">EN</a>
-    </div>
-  </div>
-
-  <!-- Theme selector -->
-  <div class="theme-switcher" aria-label="Theme selector">
-    <span class="theme-label">Theme</span>
-    <div class="theme-options">
-      <button type="button" data-theme-set="light" aria-pressed="false">☀ Light</button>
-      <button type="button" data-theme-set="dark" aria-pressed="true">☾ Dark</button>
-    </div>
-  </div>
-
-  <nav id="nav">
-    <a href="#home"><i>⌂</i>Home</a>
-    <a href="#about"><i>☻</i>About me</a>
-    <a href="#skills"><i>⚡</i>Skills</a>
-    <a href="#projects"><i>❖</i>Projects</a>
-    <a href="#journey"><i>➜</i>Experience</a>
-    <a href="#contact"><i>✉</i>Contact</a>
-  </nav>
-
-  <div class="side-social">
-    <a data-link="gh" target="_blank" rel="noopener" aria-label="GitHub"><img src="img/github.png" alt=""></a>
-    <a data-link="li" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="img/linkedin.png" alt=""></a>
-    <a data-link="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/whatsapp.png" alt=""></a>
-    <a data-link="mail" aria-label="Email"><img src="img/email.png" alt=""></a>
-  </div>
-</aside>
+<div id="worldScroll"></div>
 
 <main>
 
 <!-- Hero section -->
 <section id="home" class="hero">
-  <div class="hero-text reveal">
+  <div class="hero-text">
     <span class="tag">Hello, I am</span>
-    <h1>Lester <em>Garcia</em></h1>
+    <h1 class="big-name" aria-label="Lester Garcia"><span class="line" data-split>Lester</span><span class="line"><em data-split>Garcia</em></span></h1>
     <p class="role">Software <b id="typed"></b><span class="cursor">|</span></p>
     <p class="lead">Young person passionate about technology, training as a Software Development Technician. I build modern websites and learn by creating real projects.</p>
     <div class="cta">
-      <a href="#projects" class="btn btn-green">View projects</a>
-      <a href="#contact" class="btn btn-ghost">Contact me</a>
-      <button type="button" class="btn btn-orange" id="cvPreviewBtn">Download CV</button>
+      <a href="#projects" class="btn btn-green magnetic">View projects</a>
+      <a href="#contact" class="btn btn-ghost magnetic">Contact me</a>
+      <button type="button" class="btn btn-orange magnetic" id="cvPreviewBtn">Download CV</button>
     </div>
   </div>
   <div class="hero-photo reveal">
@@ -101,37 +85,52 @@
 <!-- Skills section -->
 <section id="skills">
   <h2 class="title"><span>02</span> Skills</h2>
-  <div class="skills">
-    <div class="skill reveal"><h3>Frontend</h3><p>Building the visual and interactive side of websites: structure, responsive design and browser behavior.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div>
-    <div class="skill reveal"><h3>Backend</h3><p>Server-side logic: building APIs and web applications that process and deliver data.</p><div class="tags"><span>Node.js</span><span>JavaScript</span><span>Express</span></div></div>
-    <div class="skill reveal"><h3>Database</h3><p>Relational data modeling and SQL queries to store and manage information.</p><div class="tags"><span>MySQL</span></div></div>
-    <div class="skill reveal"><h3>Artificial Intelligence</h3><p>Responsible use of development tools to optimize time and maximize productivity.</p><div class="tags"><span>AI</span><span>Code assistants</span></div></div>
+  <p class="intro reveal">My stack as a map: hover (or tap) a node to see what I do with each technology.</p>
+  <div class="constellation reveal">
+    <canvas id="stack" role="img" aria-label="Interactive technology map: HTML, CSS, JavaScript, Node.js, Express, MySQL, Git and AI."></canvas>
+    <aside class="node-card" id="nodeCard" aria-live="polite"><h3 id="nodeTitle"></h3><p id="nodeText"></p></aside>
   </div>
+  <ul class="sr-only" id="stackList"></ul>
 </section>
 
-<!-- Projects section -->
+<!-- Projects -->
 <section id="projects">
   <h2 class="title"><span>03</span> Projects</h2>
-  <div class="projects">
-    <a class="project project-featured reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/api-recetas.png" alt="Virtual chef connected to a recipe API" loading="lazy"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Virtual Chef API</h3><p>A small interactive web page using an API.</p><em>View project →</em></div>
+  <div class="plist">
+    <a class="prow reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener" data-accent="#2dd4bf">
+      <span class="pn">01</span>
+      <div class="pm"><h3>Virtual Chef API</h3><p>A small interactive web page that consumes a recipe API.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/api-recetas.png" alt="Virtual chef connected to a recipe API">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/campus-parking.png" alt="Parking management system" loading="lazy" style="filter:hue-rotate(60deg)"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Parking Control</h3><p>A system for managing a parking lot.</p><em>View project →</em></div>
+    <a class="prow reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener" data-accent="#7dd3fc">
+      <span class="pn">02</span>
+      <div class="pm"><h3>Parking Control</h3><p>A system for managing a parking lot.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/campus-parking.png" alt="Parking management system" style="filter:hue-rotate(60deg)">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/campus-shop.png" alt="Online clothing store" loading="lazy" style="filter:hue-rotate(-50deg) saturate(1.3)"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 and JavaScript</span><h3>Online Clothing Store</h3><p>A website for selling clothes using web technologies.</p><em>View project →</em></div>
+    <a class="prow reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener" data-accent="#f6bd60">
+      <span class="pn">03</span>
+      <div class="pm"><h3>Online Clothing Store</h3><p>A clothing store website built with web technologies.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/campus-shop.png" alt="Online clothing store" style="filter:hue-rotate(-50deg) saturate(1.3)">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/GIT.png" alt="Git project" loading="lazy"></div>
-      <div class="p-body"><span class="pill o">Git</span><h3>Version Control</h3><p>Repositories, commits, branches and merges applied in a group repository where each member creates their own branch and commit for review, and if it meets the required criteria it is accepted and added to production.</p><em>View project →</em></div>
+    <a class="prow reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener" data-accent="#f87171">
+      <span class="pn">04</span>
+      <div class="pm"><h3>Version Control</h3><p>Branches, commits and merges in a group repository: each member works on their own branch, it is reviewed and, if it meets the criteria, goes to production.</p></div>
+      <span class="pt">Git · GitHub</span>
+      <img class="pthumb" src="img/GIT.png" alt="Group repository with Git">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/html.png" alt="Portfolio built with HTML and CSS" loading="lazy"></div>
-      <div class="p-body"><span class="pill b">HTML · CSS · JS</span><h3>Web Portfolio</h3><p>This portfolio designed with pure web technologies.</p><em>View project →</em></div>
+    <a class="prow reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener" data-accent="#a78bfa">
+      <span class="pn">05</span>
+      <div class="pm"><h3>Web Portfolio</h3><p>This portfolio, built with pure web technologies.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/html.png" alt="Web portfolio">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
   </div>
 </section>
@@ -193,5 +192,7 @@
 
 <button id="toTop" aria-label="Back to top">↑</button>
 <script src="js/main.js"></script>
+<script src="js/vendor/three.min.js"></script>
+<script src="js/world.js"></script>
 </body>
 </html>

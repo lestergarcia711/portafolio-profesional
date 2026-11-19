@@ -8,72 +8,56 @@
   <meta name="theme-color" content="#0b1220">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
   <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script>try{var d=document.documentElement;if(location.protocol!=="file:"&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&localStorage.getItem("mode")!=="page")d.classList.add("immersive")}catch(e){}</script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<!-- ============ BARRA SUPERIOR (solo móvil) ============ -->
-<div class="topbar">
-  <strong>Lester<span>.</span>dev</strong>
+<!-- Navegación: píldora flotante -->
+<header class="pillnav" id="sidebar">
+  <a class="pill-brand" href="#inicio" aria-label="Inicio">L<span>.</span></a>
+  <nav id="nav" aria-label="Navegación principal"><a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#habilidades">Habilidades</a><a href="#proyectos">Proyectos</a><a href="#trayectoria">Trayectoria</a><a href="#contacto">Contacto</a></nav>
+  <div class="pill-tools">
+    <div class="language-options" aria-label="Selector de idioma">
+      <a href="index.html" aria-current="page">ES</a><a href="index-en.html" >EN</a>
+    </div>
+    <div class="theme-options" aria-label="Selector de tema">
+      <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Claro">☀</button>
+      <button type="button" data-theme-set="dark" aria-pressed="true" aria-label="Oscuro">☾</button>
+    </div>
+    <button type="button" id="modeBtn" hidden></button>
+  </div>
   <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+</header>
+
+<!-- Mundo 3D inmersivo (js/world.js). Si no hay WebGL, se usa la página clásica de abajo -->
+<div class="world" id="world" role="region" aria-label="Recorrido 3D por el portafolio">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="cap" id="c0"><small>— Desarrollador de software</small><h1 class="big-name" aria-label="Lester García"><span class="line" data-split>Lester</span><span class="line"><em data-split>García</em></span></h1><p>Baja para recorrer el espacio.</p></div>
+  <div class="cap" id="c1"><small>01 — Sobre mí</small><h2>Aprendo construyendo.</h2><p>Estoy en proceso de convertirme en técnico en desarrollo de software. Me gusta entender cómo funcionan las cosas desde cero y practicar construyendo proyectos que resuelvan problemas reales.</p><ul class="mini-tl"><li>2026 · Portafolio web profesional</li><li>En curso · Técnico en Desarrollo de Software</li><li>Prácticas · NodeJS, Express, MySQL y Git</li></ul></div>
+  <div class="cap" id="c2"><small>02 — Habilidades</small><h2 id="stackTitle">Mi stack, en órbita.</h2><p id="stackText">Pasa el cursor (o toca) un nodo para ver cómo lo uso.</p></div>
+  <div class="cap" id="c3"><small>03 — Proyectos</small><h2>Atraviesa mis proyectos.</h2><p>Haz clic en un panel para abrirlo.</p></div>
+  <div class="cap" id="c4"><small>04 — Contacto</small><h2>¿Hablamos?</h2><p>¿Tienes una idea, una oportunidad o quieres colaborar? Escríbeme por cualquiera de estos medios.</p>
+    <div class="cap-links"><a data-link="wa" target="_blank" rel="noopener">WhatsApp</a><a data-link="mail">Correo</a><a data-link="li" target="_blank" rel="noopener">LinkedIn</a><a data-link="gh" target="_blank" rel="noopener">GitHub</a><button type="button" data-cv>Descargar CV</button></div></div>
+  <div class="world-tag" id="worldTag"></div>
+  <div class="world-tip" id="worldTip">↓ desplázate para viajar · mueve el mouse para mirar</div>
+  <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
 </div>
-
-<!-- ============ SIDEBAR ============ -->
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <img src="img/perfil.jpeg" alt="Lester García">
-    <h2>Lester García</h2>
-    <p>Sofware Explorer</p>
-  </div>
-
-  <!-- Permite cambiar entre la versión en español y la versión en inglés -->
-  <div class="language-switcher" aria-label="Selector de idioma">
-    <span class="language-label">Idioma</span>
-    <div class="language-options">
-      <a href="index.html" aria-current="page">ES</a>
-      <a href="index-en.html">EN</a>
-    </div>
-  </div>
-
-  <!-- Selector de tema -->
-  <div class="theme-switcher" aria-label="Selector de tema">
-    <span class="theme-label">Tema</span>
-    <div class="theme-options">
-      <button type="button" data-theme-set="light" aria-pressed="false">☀ Claro</button>
-      <button type="button" data-theme-set="dark" aria-pressed="true">☾ Oscuro</button>
-    </div>
-  </div>
-
-  <nav id="nav">
-    <a href="#inicio"><i>⌂</i>Inicio</a>
-    <a href="#sobre-mi"><i>☻</i>Sobre mí</a>
-    <a href="#habilidades"><i>⚡</i>Habilidades</a>
-    <a href="#proyectos"><i>❖</i>Proyectos</a>
-    <a href="#trayectoria"><i>➜</i>Trayectoria</a>
-    <a href="#contacto"><i>✉</i>Contacto</a>
-  </nav>
-
-  <div class="side-social">
-    <a data-link="gh" target="_blank" rel="noopener" aria-label="GitHub"><img src="img/github.png" alt=""></a>
-    <a data-link="li" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="img/linkedin.png" alt=""></a>
-    <a data-link="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/whatsapp.png" alt=""></a>
-    <a data-link="mail" aria-label="Correo"><img src="img/email.png" alt=""></a>
-  </div>
-</aside>
+<div id="worldScroll"></div>
 
 <main>
 
 <!-- ============ INICIO / HERO ============ -->
 <section id="inicio" class="hero">
-  <div class="hero-text reveal">
-    <span class="tag"> Hola, soy</span>
-    <h1>Lester <em>García</em></h1>
+  <div class="hero-text">
+    <span class="tag">Hola, soy</span>
+    <h1 class="big-name" aria-label="Lester García"><span class="line" data-split>Lester</span><span class="line"><em data-split>García</em></span></h1>
     <p class="role">Desarrollador <b id="typed"></b><span class="cursor">|</span></p>
-    <p class="lead">Joven apasionado por la tecnología, en formación como Tecnico en Desarrollo de Software. Construyo sitios web modernos y aprendo creando proyectos reales.</p>
+    <p class="lead">Joven apasionado por la tecnología, en formación como Técnico en Desarrollo de Software. Construyo sitios web modernos y aprendo creando proyectos reales.</p>
     <div class="cta">
-      <a href="#proyectos" class="btn btn-green">Ver proyectos</a>
-      <a href="#contacto" class="btn btn-ghost">Contáctame</a>
-      <button type="button" class="btn btn-orange" id="cvPreviewBtn">Descargar CV</button>
+      <a href="#proyectos" class="btn btn-green magnetic">Ver proyectos</a>
+      <a href="#contacto" class="btn btn-ghost magnetic">Contáctame</a>
+      <button type="button" class="btn btn-orange magnetic" id="cvPreviewBtn">Descargar CV</button>
     </div>
   </div>
   <div class="hero-photo reveal">
@@ -101,38 +85,52 @@
 <!-- ============ HABILIDADES ============ -->
 <section id="habilidades">
   <h2 class="title"><span>02</span> Habilidades</h2>
-  <div class="skills">
-    <div class="skill reveal"><h3>Frontend</h3><p>Construcción de la parte visual e interactiva de los sitios web: estructura, diseño responsivo y comportamiento en el navegador.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div>
-    <div class="skill reveal"><h3>Backend</h3><p>Lógica del lado del servidor: creación de APIs y aplicaciones web que procesan y entregan datos.</p><div class="tags"><span>Node.js</span><span>JavaScript</span><span>Express</span></div></div>
-    <div class="skill reveal"><h3>Base de datos</h3><p>Diseño de modelos relacionales y consultas SQL para almacenar y gestionar la información.</p><div class="tags"><span>MySQL</span></div></div>
-    <div class="skill reveal"><h3>Inteligencia Artificial</h3><p>Uso responsable de herramientas para desarrollo, con el fin de optimizar tiempos y maximizar la productividad.</p><div class="tags"><span>IA </span><span>Asistentes de código</span></div></div>
+  <p class="intro reveal">Mi stack como un mapa: pasa el cursor (o toca) un nodo para ver qué hago con cada tecnología.</p>
+  <div class="constellation reveal">
+    <canvas id="stack" role="img" aria-label="Mapa interactivo de tecnologías: HTML, CSS, JavaScript, Node.js, Express, MySQL, Git e IA."></canvas>
+    <aside class="node-card" id="nodeCard" aria-live="polite"><h3 id="nodeTitle"></h3><p id="nodeText"></p></aside>
   </div>
+  <ul class="sr-only" id="stackList"></ul>
 </section>
 
-<!-- ============ PROYECTOS ============ -->
+<!-- Projects -->
 <section id="proyectos">
   <h2 class="title"><span>03</span> Proyectos</h2>
-  <!-- Cambia cada href por el enlace real de cada proyecto -->
-  <div class="projects">
-    <a class="project project-featured reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/api-recetas.png" alt="Chef virtual conectado a una API de recetas" loading="lazy"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 y JavaScript</span><h3>Api-chef-virtual</h3><p>Una mini pagina interactiva usando una API</p><em>Ver proyecto →</em></div>
+  <div class="plist">
+    <a class="prow reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener" data-accent="#2dd4bf">
+      <span class="pn">01</span>
+      <div class="pm"><h3>Api-chef-virtual</h3><p>Una mini página interactiva que consume una API de recetas.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/api-recetas.png" alt="Chef virtual conectado a una API de recetas">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/campus-parking.png" alt="Control de parqueo en Python" loading="lazy" style="filter:hue-rotate(60deg)"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 y JavaScript</span><h3>Control de parqueo</h3><p>Sistema para el gestionamiento de un parqueo.</p><em>Ver proyecto →</em></div>
+    <a class="prow reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener" data-accent="#7dd3fc">
+      <span class="pn">02</span>
+      <div class="pm"><h3>Control de parqueo</h3><p>Sistema para la gestión de un parqueo.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/campus-parking.png" alt="Sistema de control de parqueo" style="filter:hue-rotate(60deg)">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/campus-shop.png" alt="Registro de gimnasio en Python" loading="lazy" style="filter:hue-rotate(-50deg) saturate(1.3)"></div>
-      <div class="p-body"><span class="pill g">HTML, CSS3 y JavaScript</span><h3>Pagina web-venta de ropa</h3><p>Desarrollo de una página web para la venta de ropa utilizando tecnologías web.</p><em>Ver proyecto →</em></div>
+    <a class="prow reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener" data-accent="#f6bd60">
+      <span class="pn">03</span>
+      <div class="pm"><h3>Venta de ropa online</h3><p>Página web para la venta de ropa construida con tecnologías web.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/campus-shop.png" alt="Página web de venta de ropa" style="filter:hue-rotate(-50deg) saturate(1.3)">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/GIT.png" alt="Proyecto con Git" loading="lazy"></div>
-      <div class="p-body"><span class="pill o">Git</span><h3>Control de versiones</h3><p>Repositorios, commits, ramas y merge aplicados en la práctica de un repositorio grupal donde un cada uno crea su rama y commit par revision, y si cumple con las metricas requeridas es aceptado y agregado a produccion.</p><em>Ver proyecto →</em></div>
+    <a class="prow reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener" data-accent="#f87171">
+      <span class="pn">04</span>
+      <div class="pm"><h3>Control de versiones</h3><p>Ramas, commits y merge en un repositorio grupal: cada integrante crea su rama, se revisa y, si cumple las métricas, pasa a producción.</p></div>
+      <span class="pt">Git · GitHub</span>
+      <img class="pthumb" src="img/GIT.png" alt="Repositorio grupal con Git">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
-    <a class="project reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener">
-      <div class="p-img"><img src="img/html.png" alt="Portafolio en HTML y CSS" loading="lazy"></div>
-      <div class="p-body"><span class="pill b">HTML · CSS · JS</span><h3>Portafolio web</h3><p>Diseño de este portafolio digital con tecnologías web puras.</p><em>Ver proyecto →</em></div>
+    <a class="prow reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener" data-accent="#a78bfa">
+      <span class="pn">05</span>
+      <div class="pm"><h3>Portafolio web</h3><p>Este portafolio, hecho con tecnologías web puras.</p></div>
+      <span class="pt">HTML · CSS · JS</span>
+      <img class="pthumb" src="img/html.png" alt="Portafolio web">
+      <span class="parrow" aria-hidden="true">↗</span>
     </a>
   </div>
 </section>
@@ -193,5 +191,7 @@
 
 <button id="toTop" aria-label="Volver arriba">↑</button>
 <script src="js/main.js"></script>
+<script src="js/vendor/three.min.js"></script>
+<script src="js/world.js"></script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+Assets de js/weld.js — todos CC0 (dominio público), de Poly Haven (https://polyhaven.com):
+
+- portable_welding_cart_1k.gltf (+ .bin y textures/)  — "Portable Welding Cart", Georgii Gorbunov
+- metal_plate_*_1k.jpg                                  — textura PBR "Metal Plate"
+- foundry_1k.hdr                                        — HDRI "Industrial Workshop Foundry"
+
+Cargadores GLTFLoader.js y RGBELoader.js (js/vendor/three-extras/): three.js r128, licencia MIT.

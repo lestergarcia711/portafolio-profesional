@@ -1,198 +1,447 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lester Garcia | Software Development Technician</title>
-  <meta name="description" content="Lester Garcia's portfolio: full stack developer in training. Projects with Python, HTML, CSS, JavaScript and Git.">
-  <meta name="theme-color" content="#0b1220">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
-  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <script>try{var d=document.documentElement;if(location.protocol!=="file:"&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&localStorage.getItem("mode")!=="page")d.classList.add("immersive")}catch(e){}</script>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lester Garcia | Software Development Technician</title>
+    <meta
+      name="description"
+      content="Lester Garcia's portfolio: full stack developer in training. Projects with Python, HTML, CSS, JavaScript and Git."
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Navegación: píldora flotante -->
+    <header class="pillnav" id="sidebar">
+      <a class="pill-brand" href="#home" aria-label="Home">L<span>.</span></a>
+      <nav id="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#journey">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="pill-tools">
+        <div class="language-options" aria-label="Language selector">
+          <a href="index.html">ES</a
+          ><a href="index-en.html" aria-current="page">EN</a>
+        </div>
+      </div>
+      <button id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
+    </header>
 
-<!-- Navegación: píldora flotante -->
-<header class="pillnav" id="sidebar">
-  <a class="pill-brand" href="#home" aria-label="Home">L<span>.</span></a>
-  <nav id="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about">About me</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#journey">Experience</a><a href="#contact">Contact</a></nav>
-  <div class="pill-tools">
-    <div class="language-options" aria-label="Language selector">
-      <a href="index.html" >ES</a><a href="index-en.html" aria-current="page">EN</a>
+    <!-- Escenario horizontal (js/stage.js). Si no hay WebGL, se usa la página clásica de abajo -->
+    <div
+      class="world"
+      id="world"
+      role="region"
+      aria-label="Horizontal tour of the portfolio"
+    >
+      <canvas id="gl" aria-hidden="true"></canvas>
+      <div class="track" id="track">
+        <section class="slide" id="s0">
+          <div class="hero-cap">
+            <small>— Software developer</small>
+            <h1 class="big-name" aria-label="Lester Garcia">
+              <span class="line">Lester</span>
+              <span class="line"><em>Garcia</em></span>
+            </h1>
+            <span class="hero-tag">Portfolio</span>
+            <p>Tap the ball to move on.</p>
+          </div>
+        </section>
+        <section class="slide" id="s1">
+          <div class="win editor" role="group" aria-label="About me">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">ABOUT ME</span>
+            </div>
+            <div class="win-body">
+              <pre class="code">
+            <span class="l"><span class="h"># About me</span></span>
+            <span class="l"> </span>
+            <span class="l">I am working toward becoming a <span class="f">software development technician</span>.</span>
+            <span class="l">I enjoy understanding how things work from the ground up and practicing</span>
+            <span class="l">by building projects that solve real problems.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Development</span></span>
+            <span class="l">I focus on application logic: I develop the <span class="k">back end</span> and <span class="k">REST APIs</span>.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Goal</span></span>
+            <span class="l">Become a <span class="k">full-stack</span> developer and add value to a work team.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Learning</span></span>
+            <span class="l">I create and take part in projects from scratch, applying good</span>
+            <span class="l">version control practices.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="c">&lt;!-- projects: 5 · technologies: 8 · motivation: 100% --&gt;</span></span>
+          </pre>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s2">
+          <div class="skills" role="group" aria-label="Skills">
+            <h2 class="skills-title">SKILLS</h2>
+            <div
+              class="tb"
+              data-h0="Tap the toolbox to open it"
+              data-h1="Tap for the next tool"
+              data-h2="Last tool · tap to put it away"
+            >
+              <div class="tb-stage">
+                <div
+                  class="tb-box"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open the toolbox"
+                >
+                  <div class="tb-inner"></div>
+                  <div class="tb-lid"><span class="tb-handle"></span></div>
+                  <div class="tb-body">
+                    <span class="tb-latch"></span>
+                    <span class="tb-latch"></span>
+                    <span class="tb-plate">LESTER · TOOLBOX</span>
+                  </div>
+                </div>
+                <div class="tb-tools" aria-live="polite">
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 01/08</span>
+                    <img class="lg" src="img/skills/html5.svg" alt="" />
+                    <b>HTML</b>
+                    <p>Semantic, accessible structure for every page.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 02/08</span>
+                    <img class="lg" src="img/skills/css3.svg" alt="" />
+                    <b>CSS</b>
+                    <p>Responsive design and animations.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 03/08</span>
+                    <img class="lg" src="img/skills/javascript.svg" alt="" />
+                    <b>JavaScript</b>
+                    <p>Browser interactivity and application logic.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 04/08</span>
+                    <img class="lg" src="img/skills/nodedotjs.svg" alt="" />
+                    <b>Node.js</b>
+                    <p>Back-end servers and REST APIs.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 05/08</span>
+                    <img class="lg" src="img/skills/express.svg" alt="" />
+                    <b>Express</b>
+                    <p>Routes and middleware to build APIs.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 06/08</span>
+                    <img class="lg" src="img/skills/mysql.svg" alt="" />
+                    <b>MySQL</b>
+                    <p>Relational models and SQL queries.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 07/08</span>
+                    <img class="lg" src="img/skills/git.svg" alt="" />
+                    <b>Git</b>
+                    <p>Branches, commits and teamwork on GitHub.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">TOOL 08/08</span>
+                    <img class="lg" src="img/skills/ia.svg" alt="" />
+                    <b>IA</b>
+                    <p>
+                      Responsible use of code assistants to boost productivity.
+                    </p>
+                  </div>
+                </div>
+                <p class="tb-hint">
+                  <span class="tb-msg">Tap the toolbox to open it</span>
+                  <b class="tb-count">0/8</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s3">
+          <div class="win term" role="group" aria-label="Projects">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">PROJECTS</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/projects</span
+                ><span class="mu">$</span> ls -1
+              </div>
+              <div class="t mu"># click a project to open it</div>
+              <a
+                class="t proj"
+                href="https://chef-virtual-con-api.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">01</span
+                ><span class="nm">Virtual-Chef-API/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># A small interactive web page that consumes a recipe
+                  API.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://sistema-campus-parking.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">02</span
+                ><span class="nm">Parking-Control/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># A system for managing a parking lot.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://campus-shop-online.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">03</span
+                ><span class="nm">Online-Clothing-Store/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># A clothing store website built with web technologies.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">04</span
+                ><span class="nm">Version-Control/</span
+                ><span class="tg">Git · GitHub</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Branches, commits and merges in a group repository: each
+                  member works on their own branch, it is reviewed and, if it
+                  meets the criteria, goes to production.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://lestergarcia711.github.io/portafolio-profesional/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">05</span><span class="nm">Web-Portfolio/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># This portfolio, built with pure web technologies.</span
+                ></a
+              >
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/projects</span
+                ><span class="mu">$</span> <span class="cur">█</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s4">
+          <div class="win term" role="group" aria-label="Experience">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">JOURNEY</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/journey</span
+                ><span class="mu">$</span> git log --graph --decorate
+              </div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">2026</span>
+                <span class="gr">(HEAD -&gt; dev)</span>
+                <b>Professional web portfolio</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> Published my portfolio on GitHub with
+                HTML, CSS and JavaScript.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">In progress</span>
+                <b>Software Development Technician training</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> Learning front-end, back-end and good
+                development practices.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">Practice</span>
+                <b>Projects with NodeJs, Express, JavaScript, MySQL and Git</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> CLI Gym Management System and REST API
+                for Movie Management, with version control on GitHub.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/journey</span
+                ><span class="mu">$</span> <span class="cur">█</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s5">
+          <div class="win term" role="group" aria-label="Contact">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">CONTACT</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/contact</span
+                ><span class="mu">$</span> ./contacto.sh --channels
+              </div>
+              <a class="t med" data-link="wa" target="_blank" rel="noopener"
+                ><span class="ic2">[wa]</span><span class="nm">WhatsApp</span
+                ><span class="ds">Message me directly</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="mail"
+                ><span class="ic2">[@]</span><span class="nm">Email</span
+                ><span class="ds"><span class="mailtxt"></span></span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="li" target="_blank" rel="noopener"
+                ><span class="ic2">[in]</span><span class="nm">LinkedIn</span
+                ><span class="ds">Let's connect</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="gh" target="_blank" rel="noopener"
+                ><span class="ic2">[gh]</span><span class="nm">GitHub</span
+                ><span class="ds">lestergarcia711</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/contact</span
+                ><span class="mu">$</span> ./contacto.sh --message
+              </div>
+              <form id="form" class="tform">
+                <label
+                  ><span>name&gt;</span><input id="name" type="text" required
+                /></label>
+                <label
+                  ><span>email&gt;</span
+                  ><input id="email" type="email" required
+                /></label>
+                <label>
+                  <span>message&gt;</span>
+                  <textarea
+                    id="msg"
+                    rows="3"
+                    required
+                    placeholder="Tell me about your project..."
+                  ></textarea>
+                </label>
+                <div class="tbtns">
+                  <button type="submit" class="tbtn">$ send --whatsapp</button>
+                  <button type="button" class="tbtn alt" data-cv>
+                    $ download --cv
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+      <button
+        type="button"
+        class="stage-prev"
+        id="stagePrev"
+        aria-label="Previous section"
+        hidden
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        class="stage-next"
+        id="stageNext"
+        aria-label="Next section"
+      >
+        <span class="lbl" id="nextLbl"></span>
+      </button>
+      <div class="world-tip" id="worldTip">tap the ball · or use ← →</div>
+      <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
     </div>
-    <div class="theme-options" aria-label="Theme selector">
-      <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light">☀</button>
-      <button type="button" data-theme-set="dark" aria-pressed="true" aria-label="Dark">☾</button>
+
+    <!-- English CV preview modal -->
+    <div class="cv-modal" id="cvModal" aria-hidden="true">
+      <div class="cv-modal-backdrop" data-close="cvModal"></div>
+      <div
+        class="cv-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cvModalTitle"
+      >
+        <div class="cv-modal-header">
+          <h3 id="cvModalTitle">CV Preview</h3>
+          <button
+            type="button"
+            class="cv-modal-close"
+            id="cvCloseBtn"
+            aria-label="Close preview"
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          src="docs/CV-Lester-Garcia.pdf"
+          title="Curriculum vitae preview"
+          loading="lazy"
+        ></iframe>
+        <div class="cv-modal-actions">
+          <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">
+            Close
+          </button>
+          <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download
+            >Download PDF</a
+          >
+        </div>
+      </div>
     </div>
-    <button type="button" id="modeBtn" hidden></button>
-  </div>
-  <button id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
-</header>
 
-<!-- Mundo 3D inmersivo (js/world.js). Si no hay WebGL, se usa la página clásica de abajo -->
-<div class="world" id="world" role="region" aria-label="3D tour of the portfolio">
-  <canvas id="gl" aria-hidden="true"></canvas>
-  <div class="cap" id="c0"><small>— Software developer</small><h1 class="big-name" aria-label="Lester Garcia"><span class="line" data-split>Lester</span><span class="line"><em data-split>Garcia</em></span></h1><p>Scroll down to explore the space.</p></div>
-  <div class="cap" id="c1"><small>01 — About me</small><h2>I learn by building.</h2><p>I am working toward becoming a software development technician. I enjoy understanding how things work from the ground up and practicing by building projects that solve real problems.</p><ul class="mini-tl"><li>2026 · Professional web portfolio</li><li>In progress · Software Development Technician training</li><li>Practice · NodeJS, Express, MySQL and Git</li></ul></div>
-  <div class="cap" id="c2"><small>02 — Skills</small><h2 id="stackTitle">My stack, in orbit.</h2><p id="stackText">Hover (or tap) a node to see how I use it.</p></div>
-  <div class="cap" id="c3"><small>03 — Projects</small><h2>Fly through my projects.</h2><p>Click a panel to open it.</p></div>
-  <div class="cap" id="c4"><small>04 — Contact</small><h2>Let's talk?</h2><p>Do you have an idea, an opportunity or want to collaborate? Write to me through any of these channels.</p>
-    <div class="cap-links"><a data-link="wa" target="_blank" rel="noopener">WhatsApp</a><a data-link="mail">Email</a><a data-link="li" target="_blank" rel="noopener">LinkedIn</a><a data-link="gh" target="_blank" rel="noopener">GitHub</a><button type="button" data-cv>Download CV</button></div></div>
-  <div class="world-tag" id="worldTag"></div>
-  <div class="world-tip" id="worldTip">↓ scroll to travel · move the mouse to look around</div>
-  <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
-</div>
-<div id="worldScroll"></div>
+    <!-- Footer -->
 
-<main>
-
-<!-- Hero section -->
-<section id="home" class="hero">
-  <div class="hero-text">
-    <span class="tag">Hello, I am</span>
-    <h1 class="big-name" aria-label="Lester Garcia"><span class="line" data-split>Lester</span><span class="line"><em data-split>Garcia</em></span></h1>
-    <p class="role">Software <b id="typed"></b><span class="cursor">|</span></p>
-    <p class="lead">Young person passionate about technology, training as a Software Development Technician. I build modern websites and learn by creating real projects.</p>
-    <div class="cta">
-      <a href="#projects" class="btn btn-green magnetic">View projects</a>
-      <a href="#contact" class="btn btn-ghost magnetic">Contact me</a>
-      <button type="button" class="btn btn-orange magnetic" id="cvPreviewBtn">Download CV</button>
-    </div>
-  </div>
-  <div class="hero-photo reveal">
-    <div class="glow"></div>
-    <img src="img/perfil.jpeg" alt="Photo of Lester Garcia">
-  </div>
-</section>
-
-<!-- About section -->
-<section id="about">
-  <h2 class="title"><span>01</span> About me</h2>
-  <p class="intro reveal">I am working toward becoming a software development technician. I enjoy understanding how things work from the ground up and practicing by building projects that solve real problems.</p>
-  <div class="cards">
-    <article class="card reveal"><h3 class="g">Development</h3><p>"I currently focus on application logic. I develop the back end and REST APIs."</p></article>
-    <article class="card reveal"><h3 class="b">Goal</h3><p>Become a full-stack developer and add value to a work team.</p></article>
-    <article class="card reveal"><h3 class="o">Learning</h3><p>"I keep learning by creating and taking part in projects from scratch and applying good version control practices."</p></article>
-  </div>
-  <div class="stats reveal">
-    <div><b data-count="5">0</b><span>Projects</span></div>
-    <div><b data-count="6">0</b><span>Technologies</span></div>
-    <div><b data-count="100">0</b><span>% Motivation</span></div>
-  </div>
-</section>
-
-<!-- Skills section -->
-<section id="skills">
-  <h2 class="title"><span>02</span> Skills</h2>
-  <p class="intro reveal">My stack as a map: hover (or tap) a node to see what I do with each technology.</p>
-  <div class="constellation reveal">
-    <canvas id="stack" role="img" aria-label="Interactive technology map: HTML, CSS, JavaScript, Node.js, Express, MySQL, Git and AI."></canvas>
-    <aside class="node-card" id="nodeCard" aria-live="polite"><h3 id="nodeTitle"></h3><p id="nodeText"></p></aside>
-  </div>
-  <ul class="sr-only" id="stackList"></ul>
-</section>
-
-<!-- Projects -->
-<section id="projects">
-  <h2 class="title"><span>03</span> Projects</h2>
-  <div class="plist">
-    <a class="prow reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener" data-accent="#2dd4bf">
-      <span class="pn">01</span>
-      <div class="pm"><h3>Virtual Chef API</h3><p>A small interactive web page that consumes a recipe API.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/chef.svg" alt="Virtual chef connected to a recipe API">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener" data-accent="#7dd3fc">
-      <span class="pn">02</span>
-      <div class="pm"><h3>Parking Control</h3><p>A system for managing a parking lot.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/parking.svg" alt="Parking management system">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener" data-accent="#f6bd60">
-      <span class="pn">03</span>
-      <div class="pm"><h3>Online Clothing Store</h3><p>A clothing store website built with web technologies.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/shop.svg" alt="Online clothing store">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener" data-accent="#f87171">
-      <span class="pn">04</span>
-      <div class="pm"><h3>Version Control</h3><p>Branches, commits and merges in a group repository: each member works on their own branch, it is reviewed and, if it meets the criteria, goes to production.</p></div>
-      <span class="pt">Git · GitHub</span>
-      <img class="pthumb" src="img/projects-v3/git.svg" alt="Group repository with Git">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener" data-accent="#a78bfa">
-      <span class="pn">05</span>
-      <div class="pm"><h3>Web Portfolio</h3><p>This portfolio, built with pure web technologies.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/portfolio.svg" alt="Web portfolio">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-  </div>
-</section>
-
-<!-- Experience section -->
-<section id="journey">
-  <h2 class="title"><span>04</span> Experience</h2>
-  <div class="timeline">
-    <div class="t-item reveal"><b>2026</b><h3>Professional web portfolio</h3><p>Published my portfolio on GitHub with HTML, CSS and JavaScript.</p></div>
-    <div class="t-item reveal"><b>In progress</b><h3>Software Development Technician training</h3><p>Learning front-end, back-end and good development practices.</p></div>
-    <div class="t-item reveal"><b>Practice</b><h3>Projects with NodeJs, Express, JavaScript, MySQL and Git</h3><p>CLI Gym Management System and REST API for Movie Management, with version control on GitHub.</p></div>
-  </div>
-</section>
-
-<!-- Contact section -->
-<section id="contact">
-  <h2 class="title"><span>05</span> Contact</h2>
-  <p class="intro reveal">Do you have an idea, an opportunity or want to collaborate? Write to me through any of these channels.</p>
-  <div class="contact-grid">
-    <a class="c-card reveal" data-link="wa" target="_blank" rel="noopener"><i class="ic g"><img src="img/whatsapp.png" alt=""></i><div><b>WhatsApp</b><span>Message me directly</span></div></a>
-    <a class="c-card reveal" data-link="mail"><i class="ic b"><img src="img/email.png" alt=""></i><div><b>Email</b><span id="mailTxt">lestergarcia711@gmail.com</span></div></a>
-    <a class="c-card reveal" data-link="li" target="_blank" rel="noopener"><i class="ic o"><img src="img/linkedin.png" alt=""></i><div><b>LinkedIn</b><span>Let's connect</span></div></a>
-    <a class="c-card reveal" data-link="gh" target="_blank" rel="noopener"><i class="ic g"><img src="img/github.png" alt=""></i><div><b>GitHub</b><span>lestergarcia711</span></div></a>
-  </div>
-
-  <form id="form" class="form reveal">
-    <h3>Or send me a message</h3>
-    <div class="row">
-      <label>Name<input type="text" id="name" required></label>
-      <label>Email<input type="email" id="email" required></label>
-    </div>
-    <label>Message<textarea id="msg" rows="4" required placeholder="Tell me about your project..."></textarea></label>
-    <button class="btn btn-green" type="submit">Send via WhatsApp</button>
-  </form>
-</section>
-
-</main>
-
-<!-- English CV preview modal -->
-<div class="cv-modal" id="cvModal" aria-hidden="true">
-  <div class="cv-modal-backdrop" data-close="cvModal"></div>
-  <div class="cv-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
-    <div class="cv-modal-header">
-      <h3 id="cvModalTitle">CV Preview</h3>
-      <button type="button" class="cv-modal-close" id="cvCloseBtn" aria-label="Close preview">✕</button>
-    </div>
-    <iframe src="docs/CV-Lester-Garcia.pdf" title="Curriculum vitae preview" loading="lazy"></iframe>
-    <div class="cv-modal-actions">
-      <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">Close</button>
-      <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download>Download PDF</a>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <p>"Everything is possible only if you want" · © <span id="year"></span> Lester Garcia</p>
-</footer>
-
-<button id="toTop" aria-label="Back to top">↑</button>
-<script src="js/main.js"></script>
-<script src="js/vendor/three.min.js"></script>
-<script src="js/world.js"></script>
-</body>
+    <script src="js/main.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/three-extras/GLTFLoader.js"></script>
+    <script src="js/vendor/three-extras/RGBELoader.js"></script>
+    <script src="js/weld.js"></script>
+    <script src="js/beam.js"></script>
+    <script src="js/stage.js"></script>
+    <script src="js/toolbox3d.js"></script>
+  </body>
 </html>

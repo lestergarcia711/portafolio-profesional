@@ -1,197 +1,454 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lester García | Técnico en Desarrollo de Software</title>
-  <meta name="description" content="Portafolio de Lester García: desarrollador full stack en formación. Proyectos en Python, HTML, CSS, JavaScript y Git.">
-  <meta name="theme-color" content="#0b1220">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
-  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <script>try{var d=document.documentElement;if(location.protocol!=="file:"&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&localStorage.getItem("mode")!=="page")d.classList.add("immersive")}catch(e){}</script>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lester García | Técnico en Desarrollo de Software</title>
+    <meta
+      name="description"
+      content="Portafolio de Lester García: desarrollador full stack en formación. Proyectos en Python, HTML, CSS, JavaScript y Git."
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Navegación: píldora flotante -->
+    <header class="pillnav" id="sidebar">
+      <a class="pill-brand" href="#inicio" aria-label="Inicio"
+        >L<span>.</span></a
+      >
+      <nav id="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="pill-tools">
+        <div class="language-options" aria-label="Selector de idioma">
+          <a href="index.html" aria-current="page">ES</a
+          ><a href="index-en.html">EN</a>
+        </div>
+      </div>
+      <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        ☰
+      </button>
+    </header>
 
-<!-- Navegación: píldora flotante -->
-<header class="pillnav" id="sidebar">
-  <a class="pill-brand" href="#inicio" aria-label="Inicio">L<span>.</span></a>
-  <nav id="nav" aria-label="Navegación principal"><a href="#inicio">Inicio</a><a href="#sobre-mi">Sobre mí</a><a href="#habilidades">Habilidades</a><a href="#proyectos">Proyectos</a><a href="#trayectoria">Trayectoria</a><a href="#contacto">Contacto</a></nav>
-  <div class="pill-tools">
-    <div class="language-options" aria-label="Selector de idioma">
-      <a href="index.html" aria-current="page">ES</a><a href="index-en.html" >EN</a>
+    <!-- Escenario horizontal (js/stage.js). Si no hay WebGL, se usa la página clásica de abajo -->
+    <div
+      class="world"
+      id="world"
+      role="region"
+      aria-label="Recorrido horizontal por el portafolio"
+    >
+      <canvas id="gl" aria-hidden="true"></canvas>
+      <div class="track" id="track">
+        <section class="slide" id="s0">
+          <div class="hero-cap">
+            <small>— Desarrollador de software</small>
+            <h1 class="big-name" aria-label="Lester García">
+              <span class="line">Lester</span>
+              <span class="line"><em>García</em></span>
+            </h1>
+            <span class="hero-tag">Portafolio</span>
+            <p>Toca el balón para avanzar.</p>
+          </div>
+        </section>
+        <section class="slide" id="s1">
+          <div class="win editor" role="group" aria-label="Sobre mí">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">SOBRE MÍ</span>
+            </div>
+            <div class="win-body">
+              <pre class="code">
+            <span class="l"><span class="h"># Sobre mí</span></span>
+            <span class="l"> </span>
+            <span class="l">Estoy en proceso de convertirme en <span class="f">técnico en desarrollo de software</span>.</span>
+            <span class="l">Me gusta entender cómo funcionan las cosas desde cero y practicar</span>
+            <span class="l">construyendo proyectos que resuelvan problemas reales.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Desarrollo</span></span>
+            <span class="l">Me enfoco en la lógica de las aplicaciones: desarrollo el <span class="k">backend</span> y las <span class="k">APIs REST</span>.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Objetivo</span></span>
+            <span class="l">Convertirme en desarrollador <span class="k">full stack</span> y aportar valor a un equipo de trabajo.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="h">## Aprendizaje</span></span>
+            <span class="l">Creo y participo en proyectos desde cero, aplicando buenas prácticas</span>
+            <span class="l">de control de versiones.</span>
+            <span class="l"> </span>
+            <span class="l"><span class="c">&lt;!-- proyectos: 5 · tecnologías: 8 · ganas: 100% --&gt;</span></span>
+          </pre>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s2">
+          <div class="skills" role="group" aria-label="Habilidades">
+            <h2 class="skills-title">HABILIDADES</h2>
+            <div
+              class="tb"
+              data-h0="Toca la caja para abrirla"
+              data-h1="Toca para la siguiente herramienta"
+              data-h2="Última herramienta · toca para guardar"
+            >
+              <div class="tb-stage">
+                <div
+                  class="tb-box"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Abrir la caja de herramientas"
+                >
+                  <div class="tb-inner"></div>
+                  <div class="tb-lid"><span class="tb-handle"></span></div>
+                  <div class="tb-body">
+                    <span class="tb-latch"></span>
+                    <span class="tb-latch"></span>
+                    <span class="tb-plate">LESTER · HERRAMIENTAS</span>
+                  </div>
+                </div>
+                <div class="tb-tools" aria-live="polite">
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 01/08</span>
+                    <img class="lg" src="img/skills/html5.svg" alt="" />
+                    <b>HTML</b>
+                    <p>Estructura semántica y accesible de cada página.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 02/08</span>
+                    <img class="lg" src="img/skills/css3.svg" alt="" />
+                    <b>CSS</b>
+                    <p>Diseño responsivo y animaciones.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 03/08</span>
+                    <img class="lg" src="img/skills/javascript.svg" alt="" />
+                    <b>JavaScript</b>
+                    <p>
+                      Interactividad en el navegador y lógica de aplicación.
+                    </p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 04/08</span>
+                    <img class="lg" src="img/skills/nodedotjs.svg" alt="" />
+                    <b>Node.js</b>
+                    <p>Servidores y APIs REST del lado del backend.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 05/08</span>
+                    <img class="lg" src="img/skills/express.svg" alt="" />
+                    <b>Express</b>
+                    <p>Rutas y middlewares para construir APIs.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 06/08</span>
+                    <img class="lg" src="img/skills/mysql.svg" alt="" />
+                    <b>MySQL</b>
+                    <p>Modelos relacionales y consultas SQL.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 07/08</span>
+                    <img class="lg" src="img/skills/git.svg" alt="" />
+                    <b>Git</b>
+                    <p>Ramas, commits y trabajo en equipo con GitHub.</p>
+                  </div>
+                  <div class="tool-card">
+                    <span class="tool-no">HERRAMIENTA 08/08</span>
+                    <img class="lg" src="img/skills/ia.svg" alt="" />
+                    <b>IA</b>
+                    <p>
+                      Uso responsable de asistentes de código para ganar
+                      productividad.
+                    </p>
+                  </div>
+                </div>
+                <p class="tb-hint">
+                  <span class="tb-msg">Toca la caja para abrirla</span>
+                  <b class="tb-count">0/8</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s3">
+          <div class="win term" role="group" aria-label="Proyectos">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">PROYECTOS</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/proyectos</span
+                ><span class="mu">$</span> ls -1
+              </div>
+              <div class="t mu"># haz clic en un proyecto para abrirlo</div>
+              <a
+                class="t proj"
+                href="https://chef-virtual-con-api.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">01</span
+                ><span class="nm">Api-chef-virtual/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Una mini página interactiva que consume una API de
+                  recetas.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://sistema-campus-parking.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">02</span
+                ><span class="nm">Control-de-parqueo/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Sistema para la gestión de un parqueo.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://campus-shop-online.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">03</span
+                ><span class="nm">Venta-de-ropa-online/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Página web para la venta de ropa construida con tecnologías
+                  web.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">04</span
+                ><span class="nm">Control-de-versiones/</span
+                ><span class="tg">Git · GitHub</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Ramas, commits y merge en un repositorio grupal: cada
+                  integrante crea su rama, se revisa y, si cumple las métricas,
+                  pasa a producción.</span
+                ></a
+              >
+              <a
+                class="t proj"
+                href="https://lestergarcia711.github.io/portafolio-profesional/"
+                target="_blank"
+                rel="noopener"
+                ><span class="no">05</span
+                ><span class="nm">Portafolio-web/</span
+                ><span class="tg">HTML · CSS · JS</span
+                ><span class="ar" aria-hidden="true">↗</span
+                ><span class="ds"
+                  ># Este portafolio, hecho con tecnologías web puras.</span
+                ></a
+              >
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/proyectos</span
+                ><span class="mu">$</span> <span class="cur">█</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s4">
+          <div class="win term" role="group" aria-label="Trayectoria">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">TRAYECTORIA</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/trayectoria</span
+                ><span class="mu">$</span> git log --graph --decorate
+              </div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">2026</span>
+                <span class="gr">(HEAD -&gt; dev)</span>
+                <b>Portafolio web profesional</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> Publicación de mi portafolio en GitHub
+                con HTML, CSS y JavaScript.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">En curso</span>
+                <b>Formación como Técnico en Desarrollo de Software</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> Aprendiendo desarrollo front-end,
+                back-end y buenas prácticas.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t gl">
+                <span class="st">*</span> <span class="yl">Prácticas</span>
+                <b>Proyectos con NodeJs, Express, JavaScript, MySQL y Git</b>
+              </div>
+              <div class="t gl mu">
+                <span class="st">|</span> Sistema de Gestión de Gimnasio CLI,
+                API REST para Gestión de Películas, con control de versiones en
+                GitHub.
+              </div>
+              <div class="t gl"><span class="st">|</span></div>
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/trayectoria</span
+                ><span class="mu">$</span> <span class="cur">█</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="slide" id="s5">
+          <div class="win term" role="group" aria-label="Contacto">
+            <div class="win-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <span class="win-title">CONTACTO</span>
+            </div>
+            <div class="win-body">
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/contacto</span
+                ><span class="mu">$</span> ./contacto.sh --medios
+              </div>
+              <a class="t med" data-link="wa" target="_blank" rel="noopener"
+                ><span class="ic2">[wa]</span><span class="nm">WhatsApp</span
+                ><span class="ds">Escríbeme directo</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="mail"
+                ><span class="ic2">[@]</span><span class="nm">Correo</span
+                ><span class="ds"><span class="mailtxt"></span></span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="li" target="_blank" rel="noopener"
+                ><span class="ic2">[in]</span><span class="nm">LinkedIn</span
+                ><span class="ds">Conectemos</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <a class="t med" data-link="gh" target="_blank" rel="noopener"
+                ><span class="ic2">[gh]</span><span class="nm">GitHub</span
+                ><span class="ds">lestergarcia711</span
+                ><span class="ar" aria-hidden="true">↗</span></a
+              >
+              <div class="t">
+                <span class="pr">lester@portafolio</span
+                ><span class="mu">:</span><span class="bl">~/contacto</span
+                ><span class="mu">$</span> ./contacto.sh --mensaje
+              </div>
+              <form id="form" class="tform">
+                <label
+                  ><span>nombre&gt;</span><input id="name" type="text" required
+                /></label>
+                <label
+                  ><span>correo&gt;</span
+                  ><input id="email" type="email" required
+                /></label>
+                <label>
+                  <span>mensaje&gt;</span>
+                  <textarea
+                    id="msg"
+                    rows="3"
+                    required
+                    placeholder="Cuéntame sobre tu proyecto..."
+                  ></textarea>
+                </label>
+                <div class="tbtns">
+                  <button type="submit" class="tbtn">
+                    $ enviar --whatsapp
+                  </button>
+                  <button type="button" class="tbtn alt" data-cv>
+                    $ descargar --cv
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+      <button
+        type="button"
+        class="stage-prev"
+        id="stagePrev"
+        aria-label="Apartado anterior"
+        hidden
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        class="stage-next"
+        id="stageNext"
+        aria-label="Siguiente apartado"
+      >
+        <span class="lbl" id="nextLbl"></span>
+      </button>
+      <div class="world-tip" id="worldTip">toca el balón · o usa ← →</div>
+      <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
     </div>
-    <div class="theme-options" aria-label="Selector de tema">
-      <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Claro">☀</button>
-      <button type="button" data-theme-set="dark" aria-pressed="true" aria-label="Oscuro">☾</button>
+
+    <div class="cv-modal" id="cvModal" aria-hidden="true">
+      <div class="cv-modal-backdrop" data-close="cvModal"></div>
+      <div
+        class="cv-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cvModalTitle"
+      >
+        <div class="cv-modal-header">
+          <h3 id="cvModalTitle">Previsualización del CV</h3>
+          <button
+            type="button"
+            class="cv-modal-close"
+            id="cvCloseBtn"
+            aria-label="Cerrar vista previa"
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          src="docs/CV-Lester-Garcia.pdf"
+          title="Vista previa del curriculum vitae"
+          loading="lazy"
+        ></iframe>
+        <div class="cv-modal-actions">
+          <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">
+            Cerrar
+          </button>
+          <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download
+            >Descargar PDF</a
+          >
+        </div>
+      </div>
     </div>
-    <button type="button" id="modeBtn" hidden></button>
-  </div>
-  <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
-</header>
 
-<!-- Mundo 3D inmersivo (js/world.js). Si no hay WebGL, se usa la página clásica de abajo -->
-<div class="world" id="world" role="region" aria-label="Recorrido 3D por el portafolio">
-  <canvas id="gl" aria-hidden="true"></canvas>
-  <div class="cap" id="c0"><small>— Desarrollador de software</small><h1 class="big-name" aria-label="Lester García"><span class="line" data-split>Lester</span><span class="line"><em data-split>García</em></span></h1><p>Baja para recorrer el espacio.</p></div>
-  <div class="cap" id="c1"><small>01 — Sobre mí</small><h2>Aprendo construyendo.</h2><p>Estoy en proceso de convertirme en técnico en desarrollo de software. Me gusta entender cómo funcionan las cosas desde cero y practicar construyendo proyectos que resuelvan problemas reales.</p><ul class="mini-tl"><li>2026 · Portafolio web profesional</li><li>En curso · Técnico en Desarrollo de Software</li><li>Prácticas · NodeJS, Express, MySQL y Git</li></ul></div>
-  <div class="cap" id="c2"><small>02 — Habilidades</small><h2 id="stackTitle">Mi stack, en órbita.</h2><p id="stackText">Pasa el cursor (o toca) un nodo para ver cómo lo uso.</p></div>
-  <div class="cap" id="c3"><small>03 — Proyectos</small><h2>Atraviesa mis proyectos.</h2><p>Haz clic en un panel para abrirlo.</p></div>
-  <div class="cap" id="c4"><small>04 — Contacto</small><h2>¿Hablamos?</h2><p>¿Tienes una idea, una oportunidad o quieres colaborar? Escríbeme por cualquiera de estos medios.</p>
-    <div class="cap-links"><a data-link="wa" target="_blank" rel="noopener">WhatsApp</a><a data-link="mail">Correo</a><a data-link="li" target="_blank" rel="noopener">LinkedIn</a><a data-link="gh" target="_blank" rel="noopener">GitHub</a><button type="button" data-cv>Descargar CV</button></div></div>
-  <div class="world-tag" id="worldTag"></div>
-  <div class="world-tip" id="worldTip">↓ desplázate para viajar · mueve el mouse para mirar</div>
-  <div class="world-prog" aria-hidden="true"><i id="worldBar"></i></div>
-</div>
-<div id="worldScroll"></div>
-
-<main>
-
-<!-- ============ INICIO / HERO ============ -->
-<section id="inicio" class="hero">
-  <div class="hero-text">
-    <span class="tag">Hola, soy</span>
-    <h1 class="big-name" aria-label="Lester García"><span class="line" data-split>Lester</span><span class="line"><em data-split>García</em></span></h1>
-    <p class="role">Desarrollador <b id="typed"></b><span class="cursor">|</span></p>
-    <p class="lead">Joven apasionado por la tecnología, en formación como Técnico en Desarrollo de Software. Construyo sitios web modernos y aprendo creando proyectos reales.</p>
-    <div class="cta">
-      <a href="#proyectos" class="btn btn-green magnetic">Ver proyectos</a>
-      <a href="#contacto" class="btn btn-ghost magnetic">Contáctame</a>
-      <button type="button" class="btn btn-orange magnetic" id="cvPreviewBtn">Descargar CV</button>
-    </div>
-  </div>
-  <div class="hero-photo reveal">
-    <div class="glow"></div>
-    <img src="img/perfil.jpeg" alt="Foto de Lester García">
-  </div>
-</section>
-
-<!-- ============ SOBRE MÍ ============ -->
-<section id="sobre-mi">
-  <h2 class="title"><span>01</span> Sobre mí</h2>
-  <p class="intro reveal">Estoy en proceso de convertirme en técnico en desarrollo de software. Me gusta entender cómo funcionan las cosas desde cero y practicar construyendo proyectos que resuelvan problemas reales.</p>
-  <div class="cards">
-    <article class="card reveal"><h3 class="g">Desarrollo</h3><p>"Actualmente me enfoco de la lógica de las aplicaciones. Desarrollo la parte del 'backend' y las APIs REST." </p></article>
-    <article class="card reveal"><h3 class="b">Objetivo</h3><p>Convertirme en un desarrollador full stack y aportar valor a un equipo de trabajo.</p></article>
-    <article class="card reveal"><h3 class="o">Aprendizaje</h3><p>"Me mantengo en constante aprendizaje creando y formando parte de proyectos desde cero y aplicando buenas prácticas de control de versiones."</p></article>
-  </div>
-  <div class="stats reveal">
-    <div><b data-count="5">0</b><span>Proyectos</span></div>
-    <div><b data-count="6">0</b><span>Tecnologías</span></div>
-    <div><b data-count="100">0</b><span>% Ganas</span></div>
-  </div>
-</section>
-
-<!-- ============ HABILIDADES ============ -->
-<section id="habilidades">
-  <h2 class="title"><span>02</span> Habilidades</h2>
-  <p class="intro reveal">Mi stack como un mapa: pasa el cursor (o toca) un nodo para ver qué hago con cada tecnología.</p>
-  <div class="constellation reveal">
-    <canvas id="stack" role="img" aria-label="Mapa interactivo de tecnologías: HTML, CSS, JavaScript, Node.js, Express, MySQL, Git e IA."></canvas>
-    <aside class="node-card" id="nodeCard" aria-live="polite"><h3 id="nodeTitle"></h3><p id="nodeText"></p></aside>
-  </div>
-  <ul class="sr-only" id="stackList"></ul>
-</section>
-
-<!-- Projects -->
-<section id="proyectos">
-  <h2 class="title"><span>03</span> Proyectos</h2>
-  <div class="plist">
-    <a class="prow reveal" href="https://chef-virtual-con-api.vercel.app/" target="_blank" rel="noopener" data-accent="#2dd4bf">
-      <span class="pn">01</span>
-      <div class="pm"><h3>Api-chef-virtual</h3><p>Una mini página interactiva que consume una API de recetas.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/chef.svg" alt="Chef virtual conectado a una API de recetas">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://sistema-campus-parking.vercel.app/" target="_blank" rel="noopener" data-accent="#7dd3fc">
-      <span class="pn">02</span>
-      <div class="pm"><h3>Control de parqueo</h3><p>Sistema para la gestión de un parqueo.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/parking.svg" alt="Sistema de control de parqueo">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://campus-shop-online.vercel.app/" target="_blank" rel="noopener" data-accent="#f6bd60">
-      <span class="pn">03</span>
-      <div class="pm"><h3>Venta de ropa online</h3><p>Página web para la venta de ropa construida con tecnologías web.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/shop.svg" alt="Página web de venta de ropa">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://github.com/lestergarcia711/campuslands-devs-lester/tree/dev" target="_blank" rel="noopener" data-accent="#f87171">
-      <span class="pn">04</span>
-      <div class="pm"><h3>Control de versiones</h3><p>Ramas, commits y merge en un repositorio grupal: cada integrante crea su rama, se revisa y, si cumple las métricas, pasa a producción.</p></div>
-      <span class="pt">Git · GitHub</span>
-      <img class="pthumb" src="img/projects-v3/git.svg" alt="Repositorio grupal con Git">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="prow reveal" href="https://lestergarcia711.github.io/portafolio-profesional/" target="_blank" rel="noopener" data-accent="#a78bfa">
-      <span class="pn">05</span>
-      <div class="pm"><h3>Portafolio web</h3><p>Este portafolio, hecho con tecnologías web puras.</p></div>
-      <span class="pt">HTML · CSS · JS</span>
-      <img class="pthumb" src="img/projects-v3/portfolio.svg" alt="Portafolio web">
-      <span class="parrow" aria-hidden="true">↗</span>
-    </a>
-  </div>
-</section>
-
-<!-- ============ TRAYECTORIA ============ -->
-<section id="trayectoria">
-  <h2 class="title"><span>04</span> Trayectoria</h2>
-  <!-- Edita fechas y textos con tu información real -->
-  <div class="timeline">
-    <div class="t-item reveal"><b>2026</b><h3>Portafolio web profesional</h3><p>Publicación de mi portafolio en GitHub con HTML, CSS y JavaScript.</p></div>
-    <div class="t-item reveal"><b>En curso</b><h3>Formación como Técnico en Desarrollo de Software</h3><p>Aprendiendo desarrollo front-end, back-end y buenas prácticas.</p></div>
-    <div class="t-item reveal"><b>Prácticas</b><h3>Proyectos con NodeJs, Express, JavaScript, MySQL y Git</h3><p>Sistema de Gestion de Gimnasio CLI, API REST para Gestión de Películas, con control de versiones en GitHub.</p></div>
-  </div>
-</section>
-
-<!-- ============ CONTACTO ============ -->
-<section id="contacto">
-  <h2 class="title"><span>05</span> Contacto</h2>
-  <p class="intro reveal">¿Tienes una idea, una oportunidad o quieres colaborar? Escríbeme por cualquiera de estos medios.</p>
-  <div class="contact-grid">
-    <a class="c-card reveal" data-link="wa" target="_blank" rel="noopener"><i class="ic g"><img src="img/whatsapp.png" alt=""></i><div><b>WhatsApp</b><span>Escríbeme directo</span></div></a>
-    <a class="c-card reveal" data-link="mail"><i class="ic b"><img src="img/email.png" alt=""></i><div><b>Correo</b><span id="mailTxt">lestergarcia711@gmail.com</span></div></a>
-    <a class="c-card reveal" data-link="li" target="_blank" rel="noopener"><i class="ic o"><img src="img/linkedin.png" alt=""></i><div><b>LinkedIn</b><span>Conectemos</span></div></a>
-    <a class="c-card reveal" data-link="gh" target="_blank" rel="noopener"><i class="ic g"><img src="img/github.png" alt=""></i><div><b>GitHub</b><span>lestergarcia711</span></div></a>
-  </div>
-
-  <form id="form" class="form reveal">
-    <h3>O envíame un mensaje</h3>
-    <div class="row">
-      <label>Nombre<input type="text" id="name" required></label>
-      <label>Correo<input type="email" id="email" required></label>
-    </div>
-    <label>Mensaje<textarea id="msg" rows="4" required placeholder="Cuéntame sobre tu proyecto..."></textarea></label>
-    <button class="btn btn-green" type="submit">Enviar por WhatsApp</button>
-  </form>
-</section>
-
-</main>
-
-<div class="cv-modal" id="cvModal" aria-hidden="true">
-  <div class="cv-modal-backdrop" data-close="cvModal"></div>
-  <div class="cv-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
-    <div class="cv-modal-header">
-      <h3 id="cvModalTitle">Previsualización del CV</h3>
-      <button type="button" class="cv-modal-close" id="cvCloseBtn" aria-label="Cerrar vista previa">✕</button>
-    </div>
-    <iframe src="docs/CV-Lester-Garcia.pdf" title="Vista previa del curriculum vitae" loading="lazy"></iframe>
-    <div class="cv-modal-actions">
-      <button type="button" class="btn btn-ghost" id="cvSecondaryCloseBtn">Cerrar</button>
-      <a href="docs/CV-Lester-Garcia.pdf" class="btn btn-orange" download>Descargar PDF</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>"Everything is possible only if you want" · © <span id="year"></span> Lester García</p>
-</footer>
-
-<button id="toTop" aria-label="Volver arriba">↑</button>
-<script src="js/main.js"></script>
-<script src="js/vendor/three.min.js"></script>
-<script src="js/world.js"></script>
-</body>
+    <script src="js/main.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/three-extras/GLTFLoader.js"></script>
+    <script src="js/vendor/three-extras/RGBELoader.js"></script>
+    <script src="js/weld.js"></script>
+    <script src="js/beam.js"></script>
+    <script src="js/stage.js"></script>
+    <script src="js/toolbox3d.js"></script>
+  </body>
 </html>

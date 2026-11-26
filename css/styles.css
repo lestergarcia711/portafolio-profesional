@@ -90,6 +90,14 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../fonts/PlayfairDisplay-Variable.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   background: var(--bg);
   background-image:
@@ -504,9 +512,16 @@ textarea:focus {
   display: block;
   margin-bottom: 12px;
   color: var(--green);
-  font: 0.72rem var(--mono);
-  letter-spacing: 0.2em;
+  font:
+    700 clamp(1.05rem, 1.8vw, 1.45rem) / 1.25 "Olivrane",
+    "Playfair Display",
+    "Instrument Serif",
+    var(--serif);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  text-shadow:
+    0 0 18px rgba(45, 212, 191, 0.35),
+    0 2px 16px #000;
 }
 
 .hero-cap h1.big-name {
